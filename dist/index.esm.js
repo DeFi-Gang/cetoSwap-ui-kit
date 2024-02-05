@@ -1875,7 +1875,7 @@ var Icon$P = function (props) {
 var Logo = function (_a) {
     var isDark = _a.isDark, props = __rest(_a, ["isDark"]);
     return (React.createElement(Svg, __assign({ viewBox: "0 0 220 50" }, props),
-        React.createElement("image", { width: "220", height: "50", href: isDark ? '/images/logo-menu-dark.png' : '/images/logo-menu-light.png' })));
+        React.createElement("image", { width: "220", height: "50", href: isDark ? "/images/logo-menu-dark.png" : "/images/logo-menu-light.png" })));
 };
 
 var Icon$Q = function (props) {
@@ -2459,17 +2459,17 @@ var connectors = [
     },
     {
         title: "Coinbase Wallet",
-        fallbackImage: '/images/wallets/coinbase.png',
+        fallbackImage: "/images/wallets/coinbase.png",
         connectorId: "walletlink",
     },
     {
         title: "Brave Wallet",
-        fallbackImage: '/images/wallets/brave.png',
+        fallbackImage: "/images/wallets/brave.png",
         connectorId: "injected",
     },
     {
         title: "Injected (Other)",
-        fallbackImage: '/images/wallets/other.png',
+        fallbackImage: "/images/wallets/other.png",
         connectorId: "injected",
     },
 ];
@@ -2485,7 +2485,7 @@ var WalletCard = function (_a) {
             onDismiss();
         }, style: { justifyContent: "space-between" }, mb: mb, id: "wallet-connect-" + title.toLocaleLowerCase() },
         React.createElement(Text, { bold: true, color: "primary", mr: "16px" }, title),
-        walletConfig.icon ? React.createElement(walletConfig.icon, { width: "32px" }) : (React.createElement(Image, { src: (_b = walletConfig.fallbackImage) !== null && _b !== void 0 ? _b : 'images/wallets/other.png', alt: title, width: 32, height: 32 }))));
+        walletConfig.icon ? (React.createElement(walletConfig.icon, { width: "32px" })) : (React.createElement(Image, { src: (_b = walletConfig.fallbackImage) !== null && _b !== void 0 ? _b : "images/wallets/other.png", alt: title, width: 32, height: 32 }))));
 };
 
 styled(Link)(templateObject_1$E || (templateObject_1$E = __makeTemplateObject(["\n  display: flex;\n  align-self: center;\n  align-items: center;\n  margin-top: 24px;\n"], ["\n  display: flex;\n  align-self: center;\n  align-items: center;\n  margin-top: 24px;\n"])));

@@ -24,7 +24,7 @@ export const Input = styled.input`
 
   &:checked + ${Handle} {
     left: calc(100% - 36px);
-    background:  ${lightColors.text};
+    background: ${lightColors.text};
   }
 
   &:focus + ${Handle} {

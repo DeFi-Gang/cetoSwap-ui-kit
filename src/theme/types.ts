@@ -40,7 +40,11 @@ export type Colors = {
   secondaryDark: string;
   tertiary: string;
   success: string;
+  successBright: string;
+  successDark: string;
   failure: string;
+  failureBright: string;
+  failureDark: string;
   warning: string;
   contrast: string;
   invertedContrast: string;

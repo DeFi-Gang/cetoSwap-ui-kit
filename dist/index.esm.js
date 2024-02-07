@@ -142,9 +142,24 @@ var variants = {
 };
 
 var getDisabledStyles = function (_a) {
-    var isLoading = _a.isLoading, theme = _a.theme;
+    var isLoading = _a.isLoading, theme = _a.theme, variant = _a.variant;
     if (isLoading === true) {
         return "\n      &:disabled,\n      &.button--disabled {\n        cursor: not-allowed;\n      }\n    ";
+    }
+    if (variant === variants.SECONDARY) {
+        return "\n      &:disabled,\n      &.button--disabled {\n        cursor: not-allowed;\n        background-color: transparent;\n        border-color: " + theme.colors.backgroundDisabled + ";\n        color: " + theme.colors.textDisabled + ";\n      }\n    ";
+    }
+    if (variant === variants.TERTIARY) {
+        return "\n      &:disabled,\n      &.button--disabled {\n        cursor: not-allowed;\n        background-color: " + theme.colors.secondaryDark + ";\n        border-color: " + theme.colors.secondaryDark + ";\n        color: " + theme.colors.textDisabled + ";\n      }\n    ";
+    }
+    if (variant === variants.TEXT) {
+        return "\n      &:disabled,\n      &.button--disabled {\n        cursor: not-allowed;\n        background-color: transparent;\n        color: " + theme.colors.textDisabled + ";\n      }\n    ";
+    }
+    if (variant === variants.DANGER) {
+        return "\n      &:disabled,\n      &.button--disabled {\n        cursor: not-allowed;\n        background-color: " + theme.colors.failureDark + ";\n        color: " + theme.colors.textDisabled + ";\n      }\n    ";
+    }
+    if (variant === variants.SUCCESS) {
+        return "\n      &:disabled,\n      &.button--disabled {\n        cursor: not-allowed;\n        background-color: " + theme.colors.successDark + ";\n        color: " + theme.colors.textDisabled + ";\n      }\n    ";
     }
     return "\n    &:disabled,\n    &.button--disabled {\n      background-color: " + theme.colors.backgroundDisabled + ";\n      border-color: " + theme.colors.backgroundDisabled + ";\n      box-shadow: none;\n      color: " + theme.colors.textDisabled + ";\n      cursor: not-allowed;\n    }\n  ";
 };
@@ -159,7 +174,7 @@ var getButtonVariantProp = function (prop) { return function (_a) {
     var theme = _a.theme, _b = _a.variant, variant = _b === void 0 ? variants.PRIMARY : _b;
     return theme.button[variant][prop];
 }; };
-var StyledButton = styled.button(templateObject_1$2 || (templateObject_1$2 = __makeTemplateObject(["\n  align-items: center;\n  background-color: ", ";\n  border: ", ";\n  border-radius: 16px;\n  box-shadow: ", ";\n  color: ", ";\n  cursor: pointer;\n  display: inline-flex;\n  font-family: inherit;\n  font-size: 16px;\n  font-weight: 600;\n  /* max-content instead of auto for Safari fix */\n  width: ", ";\n  height: ", ";\n  line-height: 1;\n  letter-spacing: 0.03em;\n  justify-content: center;\n  outline: 0;\n  padding: ", ";\n  transition: background-color 0.2s;\n  opacity: ", ";\n\n  &:hover:not(:disabled):not(.button--disabled):not(:active) {\n    background-color: ", ";\n    border-color: ", ";\n  }\n\n  &:focus:not(:active) {\n    box-shadow: 0 0 0 2px ", ";\n  }\n\n  &:active {\n    background-color: ", ";\n    box-shadow: ", ";\n  }\n\n  ", "\n  ", "\n  ", "\n"], ["\n  align-items: center;\n  background-color: ", ";\n  border: ", ";\n  border-radius: 16px;\n  box-shadow: ", ";\n  color: ", ";\n  cursor: pointer;\n  display: inline-flex;\n  font-family: inherit;\n  font-size: 16px;\n  font-weight: 600;\n  /* max-content instead of auto for Safari fix */\n  width: ", ";\n  height: ", ";\n  line-height: 1;\n  letter-spacing: 0.03em;\n  justify-content: center;\n  outline: 0;\n  padding: ", ";\n  transition: background-color 0.2s;\n  opacity: ", ";\n\n  &:hover:not(:disabled):not(.button--disabled):not(:active) {\n    background-color: ", ";\n    border-color: ", ";\n  }\n\n  &:focus:not(:active) {\n    box-shadow: 0 0 0 2px ", ";\n  }\n\n  &:active {\n    background-color: ", ";\n    box-shadow: ", ";\n  }\n\n  ", "\n  ", "\n  ", "\n"])), getButtonVariantProp("background"), getButtonVariantProp("border"), getButtonVariantProp("boxShadow"), getButtonVariantProp("color"), function (_a) {
+var StyledButton = styled.button(templateObject_1$2 || (templateObject_1$2 = __makeTemplateObject(["\n  align-items: center;\n  background-color: ", ";\n  border: ", ";\n  border-radius: 4px;\n  box-shadow: ", ";\n  color: ", ";\n  cursor: pointer;\n  display: inline-flex;\n  font-family: inherit;\n  font-size: 16px;\n  font-weight: 600;\n  /* max-content instead of auto for Safari fix */\n  width: ", ";\n  height: ", ";\n  line-height: 1;\n  letter-spacing: 0.03em;\n  justify-content: center;\n  outline: 0;\n  padding: ", ";\n  transition: background-color 0.2s;\n  opacity: ", ";\n\n  &:hover:not(:disabled):not(.button--disabled):not(:active) {\n    background-color: ", ";\n    //border-color: ", ";\n  }\n\n  &:focus:not(:active) {\n    box-shadow: 0 0 0 2px transparent;\n  }\n\n  &:active {\n    background-color: ", ";\n    box-shadow: ", ";\n  }\n\n  ", "\n  ", "\n  ", "\n"], ["\n  align-items: center;\n  background-color: ", ";\n  border: ", ";\n  border-radius: 4px;\n  box-shadow: ", ";\n  color: ", ";\n  cursor: pointer;\n  display: inline-flex;\n  font-family: inherit;\n  font-size: 16px;\n  font-weight: 600;\n  /* max-content instead of auto for Safari fix */\n  width: ", ";\n  height: ", ";\n  line-height: 1;\n  letter-spacing: 0.03em;\n  justify-content: center;\n  outline: 0;\n  padding: ", ";\n  transition: background-color 0.2s;\n  opacity: ", ";\n\n  &:hover:not(:disabled):not(.button--disabled):not(:active) {\n    background-color: ", ";\n    //border-color: ", ";\n  }\n\n  &:focus:not(:active) {\n    box-shadow: 0 0 0 2px transparent;\n  }\n\n  &:active {\n    background-color: ", ";\n    box-shadow: ", ";\n  }\n\n  ", "\n  ", "\n  ", "\n"])), getButtonVariantProp("background"), getButtonVariantProp("border"), getButtonVariantProp("boxShadow"), getButtonVariantProp("color"), function (_a) {
     var fullWidth = _a.fullWidth;
     return (fullWidth ? "100%" : "max-content");
 }, function (_a) {
@@ -171,10 +186,7 @@ var StyledButton = styled.button(templateObject_1$2 || (templateObject_1$2 = __m
 }, function (_a) {
     var isLoading = _a.isLoading;
     return (isLoading ? 0.5 : 1);
-}, getButtonVariantProp("backgroundHover"), getButtonVariantProp("borderColorHover"), function (_a) {
-    var theme = _a.theme;
-    return theme.colors.secondary;
-}, getButtonVariantProp("backgroundActive"), getButtonVariantProp("boxShadowActive"), getDisabledStyles, removePointerEvents, space);
+}, getButtonVariantProp("backgroundHover"), getButtonVariantProp("borderColorHover"), getButtonVariantProp("backgroundActive"), getButtonVariantProp("boxShadowActive"), getDisabledStyles, removePointerEvents, space);
 StyledButton.defaultProps = {
     fullWidth: false,
     type: "button",
@@ -560,7 +572,7 @@ var getIcon = function (variant) {
             return Icon$3;
     }
 };
-var IconLabel = styled.div(templateObject_1$5 || (templateObject_1$5 = __makeTemplateObject(["\n  background-color: ", ";\n  border-radius: 16px 0 0 16px;\n  color: ", ";\n  padding: 12px;\n"], ["\n  background-color: ", ";\n  border-radius: 16px 0 0 16px;\n  color: ", ";\n  padding: 12px;\n"])), getThemeColor, function (_a) {
+var IconLabel = styled.div(templateObject_1$5 || (templateObject_1$5 = __makeTemplateObject(["\n  background-color: ", ";\n  border-radius: 4px 0 0 4px;\n  color: ", ";\n  padding: 12px;\n"], ["\n  background-color: ", ";\n  border-radius: 4px 0 0 4px;\n  color: ", ";\n  padding: 12px;\n"])), getThemeColor, function (_a) {
     var theme = _a.theme;
     return theme.alert.background;
 });
@@ -569,8 +581,8 @@ var Details = styled.div(templateObject_2$1 || (templateObject_2$1 = __makeTempl
     var hasHandler = _a.hasHandler;
     return (hasHandler ? withHandlerSpacing + "px" : "12px");
 });
-var CloseHandler = styled.div(templateObject_3$1 || (templateObject_3$1 = __makeTemplateObject(["\n  border-radius: 0 16px 16px 0;\n  right: 8px;\n  position: absolute;\n  top: 8px;\n"], ["\n  border-radius: 0 16px 16px 0;\n  right: 8px;\n  position: absolute;\n  top: 8px;\n"])));
-var StyledAlert = styled(Flex)(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  position: relative;\n  background-color: ", ";\n  border-radius: 16px;\n  box-shadow: 0px 20px 36px -8px rgba(14, 14, 44, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.05);\n"], ["\n  position: relative;\n  background-color: ", ";\n  border-radius: 16px;\n  box-shadow: 0px 20px 36px -8px rgba(14, 14, 44, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.05);\n"])), function (_a) {
+var CloseHandler = styled.div(templateObject_3$1 || (templateObject_3$1 = __makeTemplateObject(["\n  border-radius: 0 4px 4px 0;\n  right: 8px;\n  position: absolute;\n  top: 8px;\n"], ["\n  border-radius: 0 4px 4px 0;\n  right: 8px;\n  position: absolute;\n  top: 8px;\n"])));
+var StyledAlert = styled(Flex)(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  position: relative;\n  background-color: ", ";\n  border-radius: 4px;\n  box-shadow: 0px 20px 36px -8px rgba(14, 14, 44, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.05);\n"], ["\n  position: relative;\n  background-color: ", ";\n  border-radius: 4px;\n  box-shadow: 0px 20px 36px -8px rgba(14, 14, 44, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.05);\n"])), function (_a) {
     var theme = _a.theme;
     return theme.alert.background;
 });
@@ -579,17 +591,20 @@ var Alert = function (_a) {
     var Icon = getIcon(variant);
     return (React.createElement(StyledAlert, null,
         React.createElement(IconLabel, { variant: variant, hasDescription: !!children },
-            React.createElement(Icon, { color: "currentColor", width: "24px" })),
+            React.createElement(Icon, { color: "white", width: "24px" })),
         React.createElement(Details, { hasHandler: !!onClick },
             React.createElement(Text, { bold: true }, title),
             typeof children === "string" ? React.createElement(Text, { as: "p" }, children) : children),
         onClick && (React.createElement(CloseHandler, null,
             React.createElement(IconButton, { size: "sm", variant: "text", onClick: onClick },
-                React.createElement(Icon$k, { width: "24px", color: "currentColor" }))))));
+                React.createElement(Icon$k, { width: "24px", color: "white" }))))));
 };
 var templateObject_1$5, templateObject_2$1, templateObject_3$1, templateObject_4;
 
-var Separator = styled.div(templateObject_1$6 || (templateObject_1$6 = __makeTemplateObject(["\n  align-items: center;\n  color: currentColor;\n  display: flex;\n  justify-content: center;\n  padding-left: 4px;\n  padding-right: 4px;\n\n  ", " {\n    padding-left: 8px;\n    padding-right: 8px;\n  }\n\n  ", " {\n    padding-left: 16px;\n    padding-right: 16px;\n  }\n"], ["\n  align-items: center;\n  color: currentColor;\n  display: flex;\n  justify-content: center;\n  padding-left: 4px;\n  padding-right: 4px;\n\n  ", " {\n    padding-left: 8px;\n    padding-right: 8px;\n  }\n\n  ", " {\n    padding-left: 16px;\n    padding-right: 16px;\n  }\n"])), function (_a) {
+var Separator = styled.div(templateObject_1$6 || (templateObject_1$6 = __makeTemplateObject(["\n  align-items: center;\n  color: ", ";\n  display: flex;\n  justify-content: center;\n  padding-left: 4px;\n  padding-right: 4px;\n\n  ", " {\n    padding-left: 8px;\n    padding-right: 8px;\n  }\n\n  ", " {\n    padding-left: 16px;\n    padding-right: 16px;\n  }\n"], ["\n  align-items: center;\n  color: ", ";\n  display: flex;\n  justify-content: center;\n  padding-left: 4px;\n  padding-right: 4px;\n\n  ", " {\n    padding-left: 8px;\n    padding-right: 8px;\n  }\n\n  ", " {\n    padding-left: 16px;\n    padding-right: 16px;\n  }\n"])), function (_a) {
+    var theme = _a.theme;
+    return theme.colors.textSubtle;
+}, function (_a) {
     var theme = _a.theme;
     return theme.mediaQueries.sm;
 }, function (_a) {
@@ -2759,19 +2774,25 @@ var ResetCSS = createGlobalStyle(templateObject_1$K || (templateObject_1$K = __m
 var templateObject_1$K;
 
 var baseColors = {
-    failure: "#ED4B9E",
+    failure: "#CD1B3E",
+    failureBright: "#9A1530",
+    failureDark: "#420A23",
     primary: "#1F17F7",
     primaryBright: "#2D27C3",
-    primaryDark: "#bc0fc8",
+    primaryDark: "#0A0434",
     secondary: "#8E067E",
+    secondaryBright: "#D501BB",
+    secondaryDark: "#440248",
     success: "#98E31A",
+    successBright: "#649315",
+    successDark: "#314618",
     warning: "#FFB237",
 };
 var brandColors = {
     binance: "#bc0fc8",
     pulse: "#bc0fc8",
 };
-var lightColors = __assign(__assign(__assign({}, baseColors), brandColors), { background: "#050317", backgroundDisabled: "#ebe9eb", contrast: "#241326", invertedContrast: "#FFFFFF", input: "#f3eaf4", tertiary: "#f4eff5", text: "#bc0fc8", textDisabled: "#c0bdc4", textSubtle: "#ba80b5", borderColor: "#eae9eb", card: "#0A0434", gradients: {
+var lightColors = __assign(__assign(__assign({}, baseColors), brandColors), { background: "#050317", backgroundDisabled: "#0D095A", contrast: "#241326", invertedContrast: "#FFFFFF", input: "#0F0749", tertiary: "#f4eff5", text: "#FFFFFF", textDisabled: "#c0bdc4", textSubtle: "#B8B6CB", borderColor: "#eae9eb", card: "#0F0749", gradients: {
         bubblegum: "linear-gradient(139.73deg, #ebe6ff 0%, #fdefff 100%)",
     } });
 var darkColors = __assign(__assign(__assign({}, baseColors), brandColors), { secondary: "#bc0fc8", background: "green", backgroundDisabled: "#423742", contrast: "#FFFFFF", invertedContrast: "#261325", input: "#573f5a", primaryDark: "#0098A1", tertiary: "#473542", text: "#f8e2fc", textDisabled: "#6f6171", textSubtle: "#d2c4d4", borderColor: "#634b63", card: "#2c262c", gradients: {
@@ -2790,13 +2811,13 @@ var PRIMARY = variants.PRIMARY, SECONDARY = variants.SECONDARY, TERTIARY = varia
 var light$1 = (_a$2 = {},
     _a$2[PRIMARY] = {
         background: lightColors.primary,
-        backgroundActive: lightColors.primaryDark,
+        backgroundActive: lightColors.input,
         backgroundHover: lightColors.primaryBright,
         border: 0,
         borderColorHover: "currentColor",
         boxShadow: "inset 0px -1px 0px rgba(14, 14, 44, 0.4)",
         boxShadowActive: "inset 0px -1px 0px rgba(14, 14, 44, 0.4)",
-        color: "#FFFFFF",
+        color: lightColors.text,
     },
     _a$2[SECONDARY] = {
         background: "transparent",
@@ -2806,32 +2827,32 @@ var light$1 = (_a$2 = {},
         borderColorHover: lightColors.primaryBright,
         boxShadow: "none",
         boxShadowActive: "none",
-        color: lightColors.primary,
+        color: lightColors.text,
     },
     _a$2[TERTIARY] = {
-        background: lightColors.tertiary,
-        backgroundActive: lightColors.tertiary,
-        backgroundHover: lightColors.tertiary,
-        border: 0,
+        background: lightColors.secondaryBright,
+        backgroundActive: lightColors.secondaryDark,
+        backgroundHover: lightColors.secondary,
+        border: "2px solid " + lightColors.secondary,
         borderColorHover: "currentColor",
         boxShadow: "none",
         boxShadowActive: "none",
-        color: lightColors.primary,
+        color: lightColors.text,
     },
     _a$2[TEXT] = {
         background: "transparent",
         backgroundActive: "transparent",
-        backgroundHover: lightColors.tertiary,
+        backgroundHover: lightColors.primaryDark,
         border: 0,
         borderColorHover: "currentColor",
         boxShadow: "none",
         boxShadowActive: "none",
-        color: lightColors.primary,
+        color: lightColors.text,
     },
     _a$2[DANGER] = {
         background: lightColors.failure,
-        backgroundActive: "#D43285",
-        backgroundHover: "#FF65B8",
+        backgroundActive: lightColors.failureDark,
+        backgroundHover: lightColors.failureBright,
         border: 0,
         borderColorHover: "currentColor",
         boxShadow: "none",
@@ -2850,8 +2871,8 @@ var light$1 = (_a$2 = {},
     },
     _a$2[SUCCESS] = {
         background: lightColors.success,
-        backgroundActive: lightColors.success + "D9",
-        backgroundHover: lightColors.success + "B3",
+        backgroundActive: lightColors.successDark,
+        backgroundHover: lightColors.successBright,
         border: 0,
         borderColorHover: "currentColor",
         boxShadow: "none",

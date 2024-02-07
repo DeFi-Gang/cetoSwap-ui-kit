@@ -46,8 +46,8 @@ export const light: ButtonTheme = {
   },
   [DANGER]: {
     background: lightColors.failure,
-    backgroundActive: "#D43285", // darkten 10%
-    backgroundHover: "#FF65B8", // lighten 10%
+    backgroundActive: lightColors.failureDark,
+    backgroundHover: lightColors.failureBright,
     border: 0,
     borderColorHover: "currentColor",
     boxShadow: "none",
@@ -55,9 +55,9 @@ export const light: ButtonTheme = {
     color: "#FFFFFF",
   },
   [SUBTLE]: {
-    background: lightColors.textSubtle,
-    backgroundActive: `${lightColors.textSubtle}D9`, // 70% opacity
-    backgroundHover: `${lightColors.textSubtle}B3`, // 85% opacity
+    background: lightColors.primary,
+    backgroundActive: lightColors.primaryDark,
+    backgroundHover: lightColors.primaryBright,
     border: 0,
     borderColorHover: "currentColor",
     boxShadow: "none",
@@ -66,8 +66,8 @@ export const light: ButtonTheme = {
   },
   [SUCCESS]: {
     background: lightColors.success,
-    backgroundActive: `${lightColors.success}D9`, // 70% opacity
-    backgroundHover: `${lightColors.success}B3`, // 85% opacity
+    backgroundActive: lightColors.successDark,
+    backgroundHover: lightColors.successBright,
     border: 0,
     borderColorHover: "currentColor",
     boxShadow: "none",

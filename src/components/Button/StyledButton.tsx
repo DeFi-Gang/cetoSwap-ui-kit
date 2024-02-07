@@ -51,6 +51,28 @@ const getDisabledStyles = ({ isLoading, theme, variant }: ThemedProps) => {
     `;
   }
 
+  if (variant === variants.DANGER) {
+    return `
+      &:disabled,
+      &.button--disabled {
+        cursor: not-allowed;
+        background-color: ${theme.colors.failureDark};
+        color: ${theme.colors.textDisabled};
+      }
+    `;
+  }
+
+  if (variant === variants.SUCCESS) {
+    return `
+      &:disabled,
+      &.button--disabled {
+        cursor: not-allowed;
+        background-color: ${theme.colors.successDark};
+        color: ${theme.colors.textDisabled};
+      }
+    `;
+  }
+
   return `
     &:disabled,
     &.button--disabled {

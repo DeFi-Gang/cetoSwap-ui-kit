@@ -30,9 +30,15 @@ export declare type Colors = {
     primaryBright: string;
     primaryDark: string;
     secondary: string;
+    secondaryBright: string;
+    secondaryDark: string;
     tertiary: string;
     success: string;
+    successBright: string;
+    successDark: string;
     failure: string;
+    failureBright: string;
+    failureDark: string;
     warning: string;
     contrast: string;
     invertedContrast: string;

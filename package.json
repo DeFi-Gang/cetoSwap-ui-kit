@@ -1,14 +1,14 @@
 {
   "name": "sparkswap-uikit",
   "version": "1.0.0",
-  "description": "Set of UI components for Sparkswap projects",
+  "description": "Set of UI components for Cetoswap projects",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
-  "repository": "https://github.com/sparkswapdao/sparkswap-uikit",
+  "repository": "https://github.com/DeFi-Gang/cetoSwap-ui-kit",
   "license": "MIT",
   "scripts": {
     "start": "yarn storybook",
@@ -18,7 +18,8 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "test": "jest",
-    "release": "yarn build && np"
+    "release": "yarn build && np",
+    "prepublish": "yarn build"
   },
   "husky": {
     "hooks": {

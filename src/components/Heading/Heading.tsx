@@ -19,8 +19,9 @@ const style = {
 
 const Heading = styled(Text).attrs({ bold: true })<HeadingProps>`
   ${({ size }) => style[size || sizes.MD]}
-  font-weight:600;
+  font-weight: 600;
   line-height: 1.1;
+  font-family: 'Orbitron', sans-serif;
 `;
 
 Heading.defaultProps = {

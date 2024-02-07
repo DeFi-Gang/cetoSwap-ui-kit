@@ -64,20 +64,20 @@ const ResetCSS = createGlobalStyle`
     box-sizing: border-box;
   }
   * {
-    font-family: 'Kanit', sans-serif;
+    font-family: 'Albert Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
   /* Scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 4px;
   }
   ::-webkit-scrollbar-thumb {
-    background: ${({ theme }) => theme.colors.textSubtle}; 
+    background: ${({ theme }) => theme.colors.primary}; 
     border-radius: 8px;
   }
   ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px ${({ theme }) => theme.colors.input}; 
+    box-shadow: inset 0 0 5px ${({ theme }) => theme.colors.primaryDark}; 
     border-radius: 10px;
   }
 `;

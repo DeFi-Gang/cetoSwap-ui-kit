@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { space } from "styled-system";
 import { RadioProps, scales } from "./types";
+import { lightColors } from "../../theme";
 
 const getScale = ({ scale }: RadioProps) => {
   switch (scale) {
@@ -34,7 +35,7 @@ const Radio = styled.input.attrs({ type: "radio" })<RadioProps>`
   transition: background-color 0.2s ease-in-out;
   border: 0;
   border-radius: 50%;
-  background-color: ${({ theme }) => theme.colors.input};
+  background-color: ${({ theme }) => theme.colors.background};
   box-shadow: ${({ theme }) => theme.shadows.inset};
 
   &:after {
@@ -57,9 +58,9 @@ const Radio = styled.input.attrs({ type: "radio" })<RadioProps>`
   }
 
   &:checked {
-    background-color: ${({ theme }) => theme.colors.success};
+    background-color: ${({ theme }) => theme.colors.primary};
     &:after {
-      background-color: ${({ theme }) => theme.radio.handleBackground};
+      background-color: ${lightColors.text};
     }
   }
 

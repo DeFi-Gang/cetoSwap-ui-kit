@@ -24,7 +24,6 @@ const getBorderColor = ({ isActive, isSuccess, isWarning, isDisabled, theme }: S
   return theme.colors.primary;
 };
 
-
 const CardFooter = styled.div<CardProps>`
   border-top: 1px;
   border-style: solid;

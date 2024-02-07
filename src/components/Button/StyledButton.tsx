@@ -6,12 +6,47 @@ type ThemedProps = {
   theme: DefaultTheme;
 } & ButtonProps;
 
-const getDisabledStyles = ({ isLoading, theme }: ThemedProps) => {
+const getDisabledStyles = ({ isLoading, theme, variant }: ThemedProps) => {
   if (isLoading === true) {
     return `
       &:disabled,
       &.button--disabled {
         cursor: not-allowed;
+      }
+    `;
+  }
+
+  if (variant === variants.SECONDARY) {
+    return `
+      &:disabled,
+      &.button--disabled {
+        cursor: not-allowed;
+        background-color: transparent;
+        border-color: ${theme.colors.backgroundDisabled};
+        color: ${theme.colors.textDisabled};
+      }
+    `;
+  }
+
+  if (variant === variants.TERTIARY) {
+    return `
+      &:disabled,
+      &.button--disabled {
+        cursor: not-allowed;
+        background-color: ${theme.colors.secondaryDark};
+        border-color: ${theme.colors.secondaryDark};
+        color: ${theme.colors.textDisabled};
+      }
+    `;
+  }
+
+  if (variant === variants.TEXT) {
+    return `
+      &:disabled,
+      &.button--disabled {
+        cursor: not-allowed;
+        background-color: transparent;
+        color: ${theme.colors.textDisabled};
       }
     `;
   }
@@ -49,7 +84,7 @@ const StyledButton = styled.button<ButtonProps>`
   align-items: center;
   background-color: ${getButtonVariantProp("background")};
   border: ${getButtonVariantProp("border")};
-  border-radius: 16px;
+  border-radius: 4px;
   box-shadow: ${getButtonVariantProp("boxShadow")};
   color: ${getButtonVariantProp("color")};
   cursor: pointer;
@@ -70,11 +105,11 @@ const StyledButton = styled.button<ButtonProps>`
 
   &:hover:not(:disabled):not(.button--disabled):not(:active) {
     background-color: ${getButtonVariantProp("backgroundHover")};
-    border-color: ${getButtonVariantProp("borderColorHover")};
+    //border-color: ${getButtonVariantProp("borderColorHover")};
   }
 
   &:focus:not(:active) {
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.secondary};
+    box-shadow: 0 0 0 2px transparent;
   }
 
   &:active {

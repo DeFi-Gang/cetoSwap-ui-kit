@@ -15,7 +15,7 @@ export const Default: React.FC = () => {
   return (
     <Text p="32px">
       <BreadCrumbs mb="32px">
-        <Link href="/" color="secondary" style={{ fontWeight: 400 }}>
+        <Link href="/" color="primary" style={{ fontWeight: 400 }}>
           Link
         </Link>
         <Text color="textDisabled">Crumb 1</Text>

@@ -31,25 +31,25 @@ export const Default: React.FC = () => {
       <Row>
         <Card isActive>
           <CardBody>Active</CardBody>
-          <CardFooter>Footer</CardFooter>
+          <CardFooter isActive>Footer</CardFooter>
         </Card>
       </Row>
       <Row>
         <Card isSuccess>
           <CardBody>Success</CardBody>
-          <CardFooter>Footer</CardFooter>
+          <CardFooter isSuccess>Footer</CardFooter>
         </Card>
       </Row>
       <Row>
         <Card isWarning>
           <CardBody>Warning</CardBody>
-          <CardFooter>Footer</CardFooter>
+          <CardFooter isWarning>Footer</CardFooter>
         </Card>
       </Row>
       <Row>
         <Card isDisabled>
           <CardBody>Disabled</CardBody>
-          <CardFooter>Footer</CardFooter>
+          <CardFooter isDisabled>Footer</CardFooter>
         </Card>
       </Row>
     </div>
@@ -74,7 +74,7 @@ export const Ribbon: React.FC = () => {
     <div style={{ padding: "32px", width: "500px" }}>
       <Row>
         <Card ribbon={<CardRibbon text="Ribbon" />}>
-          <div style={{ height: "112px", backgroundColor: "#191326" }} />
+          <div style={{ height: "112px" }} />
           <CardBody style={{ height: "150px" }}>Body</CardBody>
         </Card>
       </Row>

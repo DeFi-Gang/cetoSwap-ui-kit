@@ -1,15 +1,16 @@
 import styled from "styled-components";
+import { lightColors } from "../../theme";
 
 export const Handle = styled.div`
-  background-color: ${({ theme }) => theme.toggle.handleBackground};
+  background-color: ${({ theme }) => theme.colors.primary};
   border-radius: 50%;
   cursor: pointer;
-  height: 32px;
+  height: 16px;
   left: 4px;
   position: absolute;
   top: 4px;
   transition: left 200ms ease-in;
-  width: 32px;
+  width: 16px;
   z-index: 1;
 `;
 
@@ -22,7 +23,8 @@ export const Input = styled.input`
   z-index: 3;
 
   &:checked + ${Handle} {
-    left: calc(100% - 36px);
+    left: calc(100% - 18px);
+    background: ${lightColors.text};
   }
 
   &:focus + ${Handle} {
@@ -36,15 +38,15 @@ export const Input = styled.input`
 
 const StyledToggle = styled.div<{ checked: boolean }>`
   align-items: center;
-  background-color: ${({ theme, checked }) => theme.colors[checked ? "success" : "input"]};
+  background-color: ${({ theme, checked }) => theme.colors[checked ? "primary" : "background"]};
   border-radius: 24px;
   box-shadow: ${({ theme }) => theme.shadows.inset};
   cursor: pointer;
   display: inline-flex;
-  height: 40px;
+  height: 24px;
   position: relative;
   transition: background-color 200ms;
-  width: 72px;
+  width: 52px;
 `;
 
 export default StyledToggle;

@@ -7,7 +7,7 @@ import { BreadcrumbsProps } from "./types";
 
 const Separator = styled.div`
   align-items: center;
-  color: currentColor;
+  color: ${({ theme }) => theme.colors.textSubtle};
   display: flex;
   justify-content: center;
   padding-left: 4px;

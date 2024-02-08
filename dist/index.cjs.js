@@ -652,7 +652,7 @@ var getBackgroundColor = function (_a) {
     var theme = _a.theme, variant = _a.variant;
     return theme.colors[variant === variants.SUBTLE ? "input" : "tertiary"];
 };
-var StyledButtonMenu = styled__default['default'].div(templateObject_1$7 || (templateObject_1$7 = __makeTemplateObject(["\n  background-color: ", ";\n  border-radius: 16px;\n  display: inline-flex;\n\n  & > button + button,\n  & > a + a {\n    margin-left: 2px; // To avoid focus shadow overlap\n  }\n"], ["\n  background-color: ", ";\n  border-radius: 16px;\n  display: inline-flex;\n\n  & > button + button,\n  & > a + a {\n    margin-left: 2px; // To avoid focus shadow overlap\n  }\n"])), getBackgroundColor);
+var StyledButtonMenu = styled__default['default'].div(templateObject_1$7 || (templateObject_1$7 = __makeTemplateObject(["\n  background-color: ", ";\n  border-radius: 4px;\n  display: inline-flex;\n\n  & > button + button,\n  & > a + a {\n    margin-left: 2px; // To avoid focus shadow overlap\n  }\n"], ["\n  background-color: ", ";\n  border-radius: 4px;\n  display: inline-flex;\n\n  & > button + button,\n  & > a + a {\n    margin-left: 2px; // To avoid focus shadow overlap\n  }\n"])), getBackgroundColor);
 var templateObject_1$7;
 
 var ButtonMenu = function (_a) {
@@ -674,7 +674,7 @@ var InactiveButton = styled__default['default'](Button)(templateObject_1$8 || (t
 var ButtonMenuItem = function (_a) {
     var _b = _a.isActive, isActive = _b === void 0 ? false : _b, _c = _a.size, size = _c === void 0 ? sizes.MD : _c, _d = _a.variant, variant = _d === void 0 ? variants.PRIMARY : _d, as = _a.as, props = __rest(_a, ["isActive", "size", "variant", "as"]);
     if (!isActive) {
-        return (React__default['default'].createElement(InactiveButton, __assign({ forwardedAs: as, size: size, variant: "tertiary", colorKey: variant === variants.PRIMARY ? "primary" : "textSubtle" }, props)));
+        return (React__default['default'].createElement(InactiveButton, __assign({ forwardedAs: as, size: size, variant: "primary", colorKey: variant === variants.PRIMARY ? "primary" : "textSubtle" }, props)));
     }
     return React__default['default'].createElement(Button, __assign({ as: as, size: size, variant: variant }, props));
 };
@@ -684,9 +684,12 @@ var templateObject_1$8;
  * Priority: Warning --> Success --> Active
  */
 var getBoxShadow = function (_a) {
-    var isActive = _a.isActive, isSuccess = _a.isSuccess, isWarning = _a.isWarning, theme = _a.theme;
+    var isActive = _a.isActive, isSuccess = _a.isSuccess, isWarning = _a.isWarning, isDisabled = _a.isDisabled, theme = _a.theme;
     if (isWarning) {
         return theme.card.boxShadowWarning;
+    }
+    if (isDisabled) {
+        return theme.card.boxShadowDisabled;
     }
     if (isSuccess) {
         return theme.card.boxShadowSuccess;
@@ -696,9 +699,9 @@ var getBoxShadow = function (_a) {
     }
     return theme.card.boxShadow;
 };
-var StyledCard = styled__default['default'].div(templateObject_1$9 || (templateObject_1$9 = __makeTemplateObject(["\n  background-color: ", ";\n  border: ", ";\n  border-radius: 32px;\n  box-shadow: ", ";\n  color: ", ";\n  overflow: hidden;\n  position: relative;\n\n  ", "\n"], ["\n  background-color: ", ";\n  border: ", ";\n  border-radius: 32px;\n  box-shadow: ", ";\n  color: ", ";\n  overflow: hidden;\n  position: relative;\n\n  ", "\n"])), function (_a) {
+var StyledCard = styled__default['default'].div(templateObject_1$9 || (templateObject_1$9 = __makeTemplateObject(["\n  background-color: ", ";\n  border: ", ";\n  border-radius: 4px;\n  box-shadow: ", ";\n  color: ", ";\n  overflow: hidden;\n  position: relative;\n\n  ", "\n"], ["\n  background-color: ", ";\n  border: ", ";\n  border-radius: 4px;\n  box-shadow: ", ";\n  color: ", ";\n  overflow: hidden;\n  position: relative;\n\n  ", "\n"])), function (_a) {
     var theme = _a.theme;
-    return theme.card.background;
+    return theme.colors.background;
 }, function (_a) {
     var theme = _a.theme;
     return theme.card.boxShadow;
@@ -727,19 +730,48 @@ CardBody.defaultProps = {
 };
 var templateObject_1$a;
 
-var CardHeader = styled__default['default'].div(templateObject_1$b || (templateObject_1$b = __makeTemplateObject(["\n  background: ", ";\n\n  ", "\n"], ["\n  background: ", ";\n\n  ", "\n"])), function (_a) {
+var getBorderColor = function (_a) {
+    var isActive = _a.isActive, isSuccess = _a.isSuccess, isWarning = _a.isWarning, isDisabled = _a.isDisabled, theme = _a.theme;
+    if (isDisabled) {
+        return theme.colors.textDisabled;
+    }
+    if (isWarning) {
+        return theme.colors.failure;
+    }
+    if (isSuccess) {
+        return theme.colors.success;
+    }
+    if (isActive) {
+        return theme.colors.primary;
+    }
+    return theme.colors.primary;
+};
+var CardHeader = styled__default['default'].div(templateObject_1$b || (templateObject_1$b = __makeTemplateObject(["\n  background: ", ";\n  border-bottom: 1px;\n  border-style: solid;\n  border-bottom-color: ", ";\n  ", "\n"], ["\n  background: ", ";\n  border-bottom: 1px;\n  border-style: solid;\n  border-bottom-color: ", ";\n  ", "\n"])), function (_a) {
     var theme = _a.theme;
     return theme.card.cardHeaderBackground;
-}, styledSystem.space);
+}, getBorderColor, styledSystem.space);
 CardHeader.defaultProps = {
     p: "24px",
 };
 var templateObject_1$b;
 
-var CardFooter = styled__default['default'].div(templateObject_1$c || (templateObject_1$c = __makeTemplateObject(["\n  border-top: 1px solid ", ";\n  ", "\n"], ["\n  border-top: 1px solid ", ";\n  ", "\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.colors.borderColor;
-}, styledSystem.space);
+var getBorderColor$1 = function (_a) {
+    var isActive = _a.isActive, isSuccess = _a.isSuccess, isWarning = _a.isWarning, isDisabled = _a.isDisabled, theme = _a.theme;
+    if (isDisabled) {
+        return theme.colors.textDisabled;
+    }
+    if (isWarning) {
+        return theme.colors.failure;
+    }
+    if (isSuccess) {
+        return theme.colors.success;
+    }
+    if (isActive) {
+        return theme.colors.primary;
+    }
+    return theme.colors.primary;
+};
+var CardFooter = styled__default['default'].div(templateObject_1$c || (templateObject_1$c = __makeTemplateObject(["\n  border-top: 1px;\n  border-style: solid;\n  border-top-color: ", ";\n  ", "\n"], ["\n  border-top: 1px;\n  border-style: solid;\n  border-top-color: ", ";\n  ", "\n"])), getBorderColor$1, styledSystem.space);
 CardFooter.defaultProps = {
     p: "24px",
 };
@@ -764,6 +796,225 @@ var scales = {
     MD: "md",
 };
 
+var baseColors = {
+    failure: "#CD1B3E",
+    failureBright: "#9A1530",
+    failureDark: "#420A23",
+    primary: "#1F17F7",
+    primaryBright: "#2D27C3",
+    primaryDark: "#0A0434",
+    secondary: "#8E067E",
+    secondaryBright: "#D501BB",
+    secondaryDark: "#440248",
+    success: "#98E31A",
+    successBright: "#649315",
+    successDark: "#314618",
+    warning: "#FFB237",
+};
+var brandColors = {
+    binance: "#bc0fc8",
+    pulse: "#bc0fc8",
+};
+var lightColors = __assign(__assign(__assign({}, baseColors), brandColors), { background: "#050317", backgroundDisabled: "#0D095A", contrast: "#241326", invertedContrast: "#FFFFFF", input: "#0D095A", tertiary: "#f4eff5", text: "#FFFFFF", textDisabled: "#c0bdc4", textSubtle: "#B8B6CB", borderColor: "#eae9eb", card: "#0F0749", gradients: {
+        bubblegum: "linear-gradient(139.73deg, #ebe6ff 0%, #fdefff 100%)",
+    } });
+var darkColors = __assign(__assign(__assign({}, baseColors), brandColors), { secondary: "#bc0fc8", background: "green", backgroundDisabled: "#423742", contrast: "#FFFFFF", invertedContrast: "#261325", input: "#573f5a", primaryDark: "#0098A1", tertiary: "#473542", text: "#f8e2fc", textDisabled: "#6f6171", textSubtle: "#d2c4d4", borderColor: "#634b63", card: "#2c262c", gradients: {
+        bubblegum: "linear-gradient(139.73deg, #45315c 0%, #542a50 100%)",
+    } });
+
+var light = {
+    background: lightColors.card,
+};
+var dark = {
+    background: darkColors.card,
+};
+
+var _a, _b;
+var PRIMARY = variants.PRIMARY, SECONDARY = variants.SECONDARY, TERTIARY = variants.TERTIARY, TEXT = variants.TEXT, DANGER = variants.DANGER, SUBTLE = variants.SUBTLE, SUCCESS = variants.SUCCESS;
+var light$1 = (_a = {},
+    _a[PRIMARY] = {
+        background: lightColors.primary,
+        backgroundActive: lightColors.input,
+        backgroundHover: lightColors.primaryBright,
+        border: 0,
+        borderColorHover: "currentColor",
+        boxShadow: "inset 0px -1px 0px rgba(14, 14, 44, 0.4)",
+        boxShadowActive: "inset 0px -1px 0px rgba(14, 14, 44, 0.4)",
+        color: lightColors.text,
+    },
+    _a[SECONDARY] = {
+        background: "transparent",
+        backgroundActive: "transparent",
+        backgroundHover: "transparent",
+        border: "2px solid " + lightColors.primary,
+        borderColorHover: lightColors.primaryBright,
+        boxShadow: "none",
+        boxShadowActive: "none",
+        color: lightColors.text,
+    },
+    _a[TERTIARY] = {
+        background: lightColors.secondaryBright,
+        backgroundActive: lightColors.secondaryDark,
+        backgroundHover: lightColors.secondary,
+        border: "2px solid " + lightColors.secondary,
+        borderColorHover: "currentColor",
+        boxShadow: "none",
+        boxShadowActive: "none",
+        color: lightColors.text,
+    },
+    _a[TEXT] = {
+        background: "transparent",
+        backgroundActive: "transparent",
+        backgroundHover: lightColors.primaryDark,
+        border: 0,
+        borderColorHover: "currentColor",
+        boxShadow: "none",
+        boxShadowActive: "none",
+        color: lightColors.text,
+    },
+    _a[DANGER] = {
+        background: lightColors.failure,
+        backgroundActive: lightColors.failureDark,
+        backgroundHover: lightColors.failureBright,
+        border: 0,
+        borderColorHover: "currentColor",
+        boxShadow: "none",
+        boxShadowActive: "none",
+        color: "#FFFFFF",
+    },
+    _a[SUBTLE] = {
+        background: lightColors.primary,
+        backgroundActive: lightColors.primaryDark,
+        backgroundHover: lightColors.primaryBright,
+        border: 0,
+        borderColorHover: "currentColor",
+        boxShadow: "none",
+        boxShadowActive: "none",
+        color: "#FFFFFF",
+    },
+    _a[SUCCESS] = {
+        background: lightColors.success,
+        backgroundActive: lightColors.successDark,
+        backgroundHover: lightColors.successBright,
+        border: 0,
+        borderColorHover: "currentColor",
+        boxShadow: "none",
+        boxShadowActive: "none",
+        color: "#FFFFFF",
+    },
+    _a);
+var dark$1 = (_b = {},
+    _b[PRIMARY] = __assign({}, light$1.primary),
+    _b[SECONDARY] = __assign({}, light$1.secondary),
+    _b[TERTIARY] = __assign(__assign({}, light$1.tertiary), { background: darkColors.tertiary, backgroundActive: darkColors.tertiary, backgroundHover: darkColors.tertiary, color: darkColors.primary }),
+    _b[TEXT] = __assign(__assign({}, light$1.text), { backgroundHover: darkColors.tertiary }),
+    _b[DANGER] = __assign({}, light$1.danger),
+    _b[SUBTLE] = __assign({}, light$1.subtle),
+    _b[SUCCESS] = __assign({}, light$1.success),
+    _b);
+
+var breakpointMap = {
+    xs: 370,
+    sm: 576,
+    md: 852,
+    lg: 968,
+    xl: 1080,
+};
+var breakpoints = Object.values(breakpointMap).map(function (breakpoint) { return breakpoint + "px"; });
+var mediaQueries = {
+    xs: "@media screen and (min-width: " + breakpointMap.xs + "px)",
+    sm: "@media screen and (min-width: " + breakpointMap.sm + "px)",
+    md: "@media screen and (min-width: " + breakpointMap.md + "px)",
+    lg: "@media screen and (min-width: " + breakpointMap.lg + "px)",
+    xl: "@media screen and (min-width: " + breakpointMap.xl + "px)",
+    nav: "@media screen and (min-width: " + breakpointMap.lg + "px)",
+};
+var shadows = {
+    default: "0px 0px 0px 1px #1F17F7, 0px 0px 0px 0px rgba(49,208,170,0.2)",
+    level1: "0px 2px 12px -8px rgba(25, 19, 38, 0.1), 0px 1px 1px rgba(25, 19, 38, 0.05)",
+    active: "0px 0px 0px 1px #1F17F7, 0px 0px 4px 8px rgba(23,25,127, 0.4)",
+    success: "0px 0px 0px 1px #98E31A, 0px 0px 4px 8px rgba(102, 191, 60, 0.29)",
+    warning: "0px 0px 0px 1px #CD1B3E, 0px 0px 4px 8px rgba(207, 33, 33, 0.2)",
+    focus: "0px 0px 0px 1px #1F17F7, 0px 0px 2px 4px rgba(23,25,127, 0.4)",
+    inset: "inset 0px 0px 0 1px #1F17F7",
+    disabled: "0px 0px 0px 1px #c0bdc4, 0px 0px 4px 8px rgba(199, 211, 193, 0.29)",
+};
+var spacing = [0, 4, 8, 16, 24, 32, 48, 64];
+var radii = {
+    small: "4px",
+    default: "16px",
+    card: "32px",
+    circle: "50%",
+};
+var zIndices = {
+    dropdown: 10,
+    modal: 100,
+};
+var base = {
+    siteWidth: 1200,
+    breakpoints: breakpoints,
+    mediaQueries: mediaQueries,
+    spacing: spacing,
+    shadows: shadows,
+    radii: radii,
+    zIndices: zIndices,
+};
+
+var light$2 = {
+    background: lightColors.card,
+    boxShadow: shadows.default,
+    boxShadowActive: shadows.active,
+    boxShadowDisabled: shadows.disabled,
+    boxShadowSuccess: shadows.success,
+    boxShadowWarning: shadows.warning,
+    cardHeaderBackground: lightColors.background,
+    dropShadow: "drop-shadow(0px 1px 4px rgba(25, 19, 38, 0.15))",
+};
+var dark$2 = {
+    background: darkColors.card,
+    boxShadow: shadows.default,
+    boxShadowActive: shadows.active,
+    boxShadowDisabled: shadows.disabled,
+    boxShadowSuccess: shadows.success,
+    boxShadowWarning: shadows.warning,
+    cardHeaderBackground: lightColors.background,
+    dropShadow: "drop-shadow(0px 1px 4px rgba(25, 19, 38, 0.15))",
+};
+
+var light$3 = {
+    handleBackground: lightColors.card,
+};
+var dark$3 = {
+    handleBackground: darkColors.card,
+};
+
+var light$4 = {
+    handleBackground: lightColors.card,
+};
+var dark$4 = {
+    handleBackground: darkColors.card,
+};
+
+var light$5 = {
+    background: lightColors.card,
+    hover: "#EEEAF4",
+};
+var dark$5 = {
+    background: darkColors.card,
+    hover: "#473d5d",
+};
+
+var light$6 = {
+    background: lightColors.card,
+};
+var dark$6 = {
+    background: darkColors.card,
+};
+
+var darkTheme = __assign(__assign({}, base), { isDark: true, alert: dark, button: dark$1, colors: darkColors, card: dark$2, toggle: dark$4, nav: dark$5, modal: dark$6, radio: dark$3 });
+
+var lightTheme = __assign(__assign({}, base), { isDark: false, alert: light, button: light$1, colors: lightColors, card: light$2, toggle: light$4, nav: light$5, modal: light$6, radio: light$3 });
+
 var getScale = function (_a) {
     var scale = _a.scale;
     switch (scale) {
@@ -774,9 +1025,9 @@ var getScale = function (_a) {
             return "32px";
     }
 };
-var Checkbox = styled__default['default'].input.attrs({ type: "checkbox" })(templateObject_1$e || (templateObject_1$e = __makeTemplateObject(["\n  appearance: none;\n  overflow: hidden;\n  cursor: pointer;\n  position: relative;\n  display: inline-block;\n  height: ", ";\n  width: ", ";\n  vertical-align: middle;\n  transition: background-color 0.2s ease-in-out;\n  border: 0;\n  border-radius: 8px;\n  background-color: ", ";\n  box-shadow: ", ";\n\n  &:after {\n    content: \"\";\n    position: absolute;\n    border-bottom: 2px solid;\n    border-left: 2px solid;\n    border-color: transparent;\n    top: 30%;\n    left: 0;\n    right: 0;\n    width: 50%;\n    height: 25%;\n    margin: auto;\n    transform: rotate(-50deg);\n    transition: border-color 0.2s ease-in-out;\n  }\n\n  &:hover:not(:disabled):not(:checked) {\n    box-shadow: ", ";\n  }\n\n  &:focus {\n    outline: none;\n    box-shadow: ", ";\n  }\n\n  &:checked {\n    background-color: ", ";\n    &:after {\n      border-color: white;\n    }\n  }\n\n  &:disabled {\n    cursor: default;\n    opacity: 0.6;\n  }\n"], ["\n  appearance: none;\n  overflow: hidden;\n  cursor: pointer;\n  position: relative;\n  display: inline-block;\n  height: ", ";\n  width: ", ";\n  vertical-align: middle;\n  transition: background-color 0.2s ease-in-out;\n  border: 0;\n  border-radius: 8px;\n  background-color: ", ";\n  box-shadow: ", ";\n\n  &:after {\n    content: \"\";\n    position: absolute;\n    border-bottom: 2px solid;\n    border-left: 2px solid;\n    border-color: transparent;\n    top: 30%;\n    left: 0;\n    right: 0;\n    width: 50%;\n    height: 25%;\n    margin: auto;\n    transform: rotate(-50deg);\n    transition: border-color 0.2s ease-in-out;\n  }\n\n  &:hover:not(:disabled):not(:checked) {\n    box-shadow: ", ";\n  }\n\n  &:focus {\n    outline: none;\n    box-shadow: ", ";\n  }\n\n  &:checked {\n    background-color: ", ";\n    &:after {\n      border-color: white;\n    }\n  }\n\n  &:disabled {\n    cursor: default;\n    opacity: 0.6;\n  }\n"])), getScale, getScale, function (_a) {
+var Checkbox = styled__default['default'].input.attrs({ type: "checkbox" })(templateObject_1$e || (templateObject_1$e = __makeTemplateObject(["\n  appearance: none;\n  overflow: hidden;\n  cursor: pointer;\n  position: relative;\n  display: inline-block;\n  height: ", ";\n  width: ", ";\n  vertical-align: middle;\n  transition: background-color 0.2s ease-in-out;\n  border: 0;\n  border-radius: 4px;\n  background-color: ", ";\n  box-shadow: ", ";\n\n  &:after {\n    content: \"\";\n    position: absolute;\n    border-bottom: 2px solid;\n    border-left: 2px solid;\n    border-color: transparent;\n    top: 30%;\n    left: 0;\n    right: 0;\n    width: 50%;\n    height: 25%;\n    margin: auto;\n    transform: rotate(-50deg);\n    transition: border-color 0.2s ease-in-out;\n  }\n\n  &:hover:not(:disabled):not(:checked) {\n    box-shadow: ", ";\n  }\n\n  &:focus {\n    outline: none;\n    box-shadow: ", ";\n  }\n\n  &:checked {\n    background-color: ", ";\n    &:after {\n      border-color: ", ";\n    }\n  }\n\n  &:disabled {\n    cursor: default;\n    opacity: 0.6;\n  }\n"], ["\n  appearance: none;\n  overflow: hidden;\n  cursor: pointer;\n  position: relative;\n  display: inline-block;\n  height: ", ";\n  width: ", ";\n  vertical-align: middle;\n  transition: background-color 0.2s ease-in-out;\n  border: 0;\n  border-radius: 4px;\n  background-color: ", ";\n  box-shadow: ", ";\n\n  &:after {\n    content: \"\";\n    position: absolute;\n    border-bottom: 2px solid;\n    border-left: 2px solid;\n    border-color: transparent;\n    top: 30%;\n    left: 0;\n    right: 0;\n    width: 50%;\n    height: 25%;\n    margin: auto;\n    transform: rotate(-50deg);\n    transition: border-color 0.2s ease-in-out;\n  }\n\n  &:hover:not(:disabled):not(:checked) {\n    box-shadow: ", ";\n  }\n\n  &:focus {\n    outline: none;\n    box-shadow: ", ";\n  }\n\n  &:checked {\n    background-color: ", ";\n    &:after {\n      border-color: ", ";\n    }\n  }\n\n  &:disabled {\n    cursor: default;\n    opacity: 0.6;\n  }\n"])), getScale, getScale, function (_a) {
     var theme = _a.theme;
-    return theme.colors.input;
+    return theme.colors.background;
 }, function (_a) {
     var theme = _a.theme;
     return theme.shadows.inset;
@@ -788,8 +1039,8 @@ var Checkbox = styled__default['default'].input.attrs({ type: "checkbox" })(temp
     return theme.shadows.focus;
 }, function (_a) {
     var theme = _a.theme;
-    return theme.colors.success;
-});
+    return theme.colors.primary;
+}, lightColors.text);
 Checkbox.defaultProps = {
     scale: scales.MD,
 };
@@ -809,10 +1060,10 @@ var getBottom = function (_a) {
     }
     return "auto";
 };
-var DropdownContent = styled__default['default'].div(templateObject_1$f || (templateObject_1$f = __makeTemplateObject(["\n  width: max-content;\n  display: none;\n  flex-direction: column;\n  position: absolute;\n  transform: translate(-50%, 0);\n  left: ", ";\n  bottom: ", ";\n  background-color: ", ";\n  box-shadow: ", ";\n  padding: 16px;\n  max-height: 500px;\n  overflow-y: auto;\n  z-index: ", ";\n  border-radius: ", ";\n"], ["\n  width: max-content;\n  display: none;\n  flex-direction: column;\n  position: absolute;\n  transform: translate(-50%, 0);\n  left: ", ";\n  bottom: ", ";\n  background-color: ", ";\n  box-shadow: ", ";\n  padding: 16px;\n  max-height: 500px;\n  overflow-y: auto;\n  z-index: ", ";\n  border-radius: ", ";\n"])), getLeft, getBottom, function (_a) {
+var DropdownContent = styled__default['default'].div(templateObject_1$f || (templateObject_1$f = __makeTemplateObject(["\n  width: max-content;\n  display: none;\n  flex-direction: column;\n  position: absolute;\n  transform: translate(-50%, 0);\n  left: ", ";\n  bottom: ", ";\n  background-color: ", ";\n  color: ", ";\n  box-shadow: ", ";\n  padding: 16px;\n  max-height: 500px;\n  overflow-y: auto;\n  z-index: ", ";\n  border-radius: ", ";\n"], ["\n  width: max-content;\n  display: none;\n  flex-direction: column;\n  position: absolute;\n  transform: translate(-50%, 0);\n  left: ", ";\n  bottom: ", ";\n  background-color: ", ";\n  color: ", ";\n  box-shadow: ", ";\n  padding: 16px;\n  max-height: 500px;\n  overflow-y: auto;\n  z-index: ", ";\n  border-radius: ", ";\n"])), getLeft, getBottom, function (_a) {
     var theme = _a.theme;
-    return theme.nav.background;
-}, function (_a) {
+    return theme.colors.primaryDark;
+}, lightColors.text, function (_a) {
     var theme = _a.theme;
     return theme.shadows.level1;
 }, function (_a) {
@@ -849,22 +1100,22 @@ var sizes$1 = {
     XXL: "xxl",
 };
 
-var _a;
-var style = (_a = {},
-    _a[sizes$1.MD] = {
+var _a$1;
+var style = (_a$1 = {},
+    _a$1[sizes$1.MD] = {
         fontSize: "20px",
     },
-    _a[sizes$1.LG] = {
+    _a$1[sizes$1.LG] = {
         fontSize: "24px",
     },
-    _a[sizes$1.XL] = {
+    _a$1[sizes$1.XL] = {
         fontSize: "40px",
     },
-    _a[sizes$1.XXL] = {
+    _a$1[sizes$1.XXL] = {
         fontSize: "64px",
     },
-    _a);
-var Heading = styled__default['default'](Text).attrs({ bold: true })(templateObject_1$g || (templateObject_1$g = __makeTemplateObject(["\n  ", "\n  font-weight:600;\n  line-height: 1.1;\n"], ["\n  ", "\n  font-weight:600;\n  line-height: 1.1;\n"])), function (_a) {
+    _a$1);
+var Heading = styled__default['default'](Text).attrs({ bold: true })(templateObject_1$g || (templateObject_1$g = __makeTemplateObject(["\n  ", "\n  font-weight: 600;\n  line-height: 1.1;\n  font-family: \"Orbitron\", sans-serif;\n"], ["\n  ", "\n  font-weight: 600;\n  line-height: 1.1;\n  font-family: \"Orbitron\", sans-serif;\n"])), function (_a) {
     var size = _a.size;
     return style[size || sizes$1.MD];
 });
@@ -973,7 +1224,7 @@ var getHeight = function (_a) {
             return "40px";
     }
 };
-var Input = styled__default['default'].input(templateObject_1$j || (templateObject_1$j = __makeTemplateObject(["\n  background-color: ", ";\n  border: 0;\n  border-radius: 16px;\n  box-shadow: ", ";\n  color: ", ";\n  display: block;\n  font-size: 16px;\n  height: ", ";\n  outline: 0;\n  padding: 0 16px;\n  width: 100%;\n\n  &::placeholder {\n    color: ", ";\n  }\n\n  &:disabled {\n    background-color: ", ";\n    box-shadow: none;\n    color: ", ";\n    cursor: not-allowed;\n  }\n\n  &:focus:not(:disabled) {\n    box-shadow: ", ";\n  }\n"], ["\n  background-color: ", ";\n  border: 0;\n  border-radius: 16px;\n  box-shadow: ", ";\n  color: ", ";\n  display: block;\n  font-size: 16px;\n  height: ", ";\n  outline: 0;\n  padding: 0 16px;\n  width: 100%;\n\n  &::placeholder {\n    color: ", ";\n  }\n\n  &:disabled {\n    background-color: ", ";\n    box-shadow: none;\n    color: ", ";\n    cursor: not-allowed;\n  }\n\n  &:focus:not(:disabled) {\n    box-shadow: ", ";\n  }\n"])), function (_a) {
+var Input = styled__default['default'].input(templateObject_1$j || (templateObject_1$j = __makeTemplateObject(["\n  background-color: ", ";\n  border: 0;\n  border-radius: 4px;\n  box-shadow: ", ";\n  color: ", ";\n  display: block;\n  font-size: 16px;\n  height: ", ";\n  outline: 0;\n  padding: 0 16px;\n  width: 100%;\n\n  &::placeholder {\n    color: ", ";\n  }\n\n  &:disabled {\n    background-color: ", ";\n    box-shadow: none;\n    color: ", ";\n    cursor: not-allowed;\n  }\n\n  &:focus:not(:disabled) {\n    box-shadow: ", ";\n  }\n"], ["\n  background-color: ", ";\n  border: 0;\n  border-radius: 4px;\n  box-shadow: ", ";\n  color: ", ";\n  display: block;\n  font-size: 16px;\n  height: ", ";\n  outline: 0;\n  padding: 0 16px;\n  width: 100%;\n\n  &::placeholder {\n    color: ", ";\n  }\n\n  &:disabled {\n    background-color: ", ";\n    box-shadow: none;\n    color: ", ";\n    cursor: not-allowed;\n  }\n\n  &:focus:not(:disabled) {\n    box-shadow: ", ";\n  }\n"])), function (_a) {
     var theme = _a.theme;
     return theme.colors.input;
 }, getBoxShadow$1, function (_a) {
@@ -1044,7 +1295,7 @@ var getCheckedScale = function (_a) {
 };
 var Radio = styled__default['default'].input.attrs({ type: "radio" })(templateObject_1$m || (templateObject_1$m = __makeTemplateObject(["\n  appearance: none;\n  overflow: hidden;\n  cursor: pointer;\n  position: relative;\n  display: inline-block;\n  height: ", ";\n  width: ", ";\n  vertical-align: middle;\n  transition: background-color 0.2s ease-in-out;\n  border: 0;\n  border-radius: 50%;\n  background-color: ", ";\n  box-shadow: ", ";\n\n  &:after {\n    border-radius: 50%;\n    content: \"\";\n    height: ", ";\n    left: 6px;\n    position: absolute;\n    top: 6px;\n    width: ", ";\n  }\n\n  &:hover:not(:disabled):not(:checked) {\n    box-shadow: ", ";\n  }\n\n  &:focus {\n    outline: none;\n    box-shadow: ", ";\n  }\n\n  &:checked {\n    background-color: ", ";\n    &:after {\n      background-color: ", ";\n    }\n  }\n\n  &:disabled {\n    cursor: default;\n    opacity: 0.6;\n  }\n  ", "\n"], ["\n  appearance: none;\n  overflow: hidden;\n  cursor: pointer;\n  position: relative;\n  display: inline-block;\n  height: ", ";\n  width: ", ";\n  vertical-align: middle;\n  transition: background-color 0.2s ease-in-out;\n  border: 0;\n  border-radius: 50%;\n  background-color: ", ";\n  box-shadow: ", ";\n\n  &:after {\n    border-radius: 50%;\n    content: \"\";\n    height: ", ";\n    left: 6px;\n    position: absolute;\n    top: 6px;\n    width: ", ";\n  }\n\n  &:hover:not(:disabled):not(:checked) {\n    box-shadow: ", ";\n  }\n\n  &:focus {\n    outline: none;\n    box-shadow: ", ";\n  }\n\n  &:checked {\n    background-color: ", ";\n    &:after {\n      background-color: ", ";\n    }\n  }\n\n  &:disabled {\n    cursor: default;\n    opacity: 0.6;\n  }\n  ", "\n"])), getScale$1, getScale$1, function (_a) {
     var theme = _a.theme;
-    return theme.colors.input;
+    return theme.colors.background;
 }, function (_a) {
     var theme = _a.theme;
     return theme.shadows.inset;
@@ -1056,11 +1307,8 @@ var Radio = styled__default['default'].input.attrs({ type: "radio" })(templateOb
     return theme.shadows.focus;
 }, function (_a) {
     var theme = _a.theme;
-    return theme.colors.success;
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.radio.handleBackground;
-}, styledSystem.space);
+    return theme.colors.primary;
+}, lightColors.text, styledSystem.space);
 Radio.defaultProps = {
     scale: scales$2.MD,
     m: 0,
@@ -1075,8 +1323,8 @@ var getThemeTextColor = function (_a) {
     var outline = _a.outline, _b = _a.variant, variant = _b === void 0 ? "primary" : _b, theme = _a.theme;
     return outline ? getColor$1(variant, theme) : "#ffffff";
 };
-var StyledTag = styled__default['default'].div(templateObject_1$n || (templateObject_1$n = __makeTemplateObject(["\n  align-items: center;\n  background-color: ", ";\n  border: 2px solid ", ";\n  border-radius: 16px;\n  color: ", ";\n  display: inline-flex;\n  font-size: 14px;\n  font-weight: 400;\n  height: 28px;\n  line-height: 1.5;\n  padding: 0 8px;\n  white-space: nowrap;\n\n  svg {\n    fill: ", ";\n  }\n"], ["\n  align-items: center;\n  background-color: ",
-    ";\n  border: 2px solid ", ";\n  border-radius: 16px;\n  color: ", ";\n  display: inline-flex;\n  font-size: 14px;\n  font-weight: 400;\n  height: 28px;\n  line-height: 1.5;\n  padding: 0 8px;\n  white-space: nowrap;\n\n  svg {\n    fill: ", ";\n  }\n"])), function (_a) {
+var StyledTag = styled__default['default'].div(templateObject_1$n || (templateObject_1$n = __makeTemplateObject(["\n  align-items: center;\n  background-color: ", ";\n  border: 2px solid ", ";\n  border-radius: 4px;\n  color: ", ";\n  display: inline-flex;\n  font-size: 14px;\n  font-weight: 400;\n  height: 28px;\n  line-height: 1.5;\n  padding: 0 8px;\n  white-space: nowrap;\n\n  svg {\n    fill: ", ";\n  }\n"], ["\n  align-items: center;\n  background-color: ",
+    ";\n  border: 2px solid ", ";\n  border-radius: 4px;\n  color: ", ";\n  display: inline-flex;\n  font-size: 14px;\n  font-weight: 400;\n  height: 28px;\n  line-height: 1.5;\n  padding: 0 8px;\n  white-space: nowrap;\n\n  svg {\n    fill: ", ";\n  }\n"])), function (_a) {
     var outline = _a.outline, theme = _a.theme, _b = _a.variant, variant = _b === void 0 ? "primary" : _b;
     return outline ? "transparent" : getColor$1(variant, theme);
 }, function (_a) {
@@ -1103,7 +1351,7 @@ Tag.defaultProps = {
     outline: false,
 };
 
-var StyledLink = styled__default['default'](Text)(templateObject_1$o || (templateObject_1$o = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n  width: fit-content;\n  &:hover {\n    text-decoration: underline;\n  }\n"], ["\n  display: flex;\n  align-items: center;\n  width: fit-content;\n  &:hover {\n    text-decoration: underline;\n  }\n"])));
+var StyledLink = styled__default['default'](Text)(templateObject_1$o || (templateObject_1$o = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n  width: fit-content;\n\n  &:hover {\n    text-decoration: underline;\n  }\n"], ["\n  display: flex;\n  align-items: center;\n  width: fit-content;\n\n  &:hover {\n    text-decoration: underline;\n  }\n"])));
 var Link = function (_a) {
     var external = _a.external, props = __rest(_a, ["external"]);
     var internalProps = external ? getExternalLinkProps() : {};
@@ -1121,7 +1369,7 @@ var LinkExternal = function (_a) {
         React__default['default'].createElement(Icon$t, { color: "primary", ml: "4px" })));
 };
 
-var Bar = styled__default['default'].div(templateObject_1$p || (templateObject_1$p = __makeTemplateObject(["\n  position: absolute;\n  top: 0;\n  left: 0;\n  background-color: ", ";\n  border-top-left-radius: 32px;\n  border-bottom-left-radius: 32px;\n  height: 16px;\n  transition: width 200ms ease;\n"], ["\n  position: absolute;\n  top: 0;\n  left: 0;\n  background-color: ", ";\n  border-top-left-radius: 32px;\n  border-bottom-left-radius: 32px;\n  height: 16px;\n  transition: width 200ms ease;\n"])), function (props) { return (props.primary ? props.theme.colors.secondary : props.theme.colors.secondary + "80"); });
+var Bar = styled__default['default'].div(templateObject_1$p || (templateObject_1$p = __makeTemplateObject(["\n  position: absolute;\n  top: 0;\n  left: 0;\n  background-color: ", ";\n  border-top-left-radius: 32px;\n  border-bottom-left-radius: 32px;\n  height: 16px;\n  transition: width 200ms ease;\n"], ["\n  position: absolute;\n  top: 0;\n  left: 0;\n  background-color: ", ";\n  border-top-left-radius: 32px;\n  border-bottom-left-radius: 32px;\n  height: 16px;\n  transition: width 200ms ease;\n"])), function (props) { return (props.primary ? props.theme.colors.primary : props.theme.colors.primary + "80"); });
 Bar.defaultProps = {
     primary: false,
 };
@@ -1188,7 +1436,7 @@ var Root = styled__default['default'].div(templateObject_3$3 || (templateObject_
     return (variant$1 === variant.CIRCLE ? theme.radii.circle : theme.radii.small);
 }, styledSystem.layout, styledSystem.space);
 var Pulse = styled__default['default'](Root)(templateObject_4$1 || (templateObject_4$1 = __makeTemplateObject(["\n  animation: ", " 2s infinite ease-out;\n  transform: translate3d(0, 0, 0);\n"], ["\n  animation: ", " 2s infinite ease-out;\n  transform: translate3d(0, 0, 0);\n"])), pulse);
-var Waves = styled__default['default'](Root)(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  position: relative;\n  overflow: hidden;\n  transform: translate3d(0, 0, 0);\n  &:before {\n    content: \"\";\n    position: absolute;\n    background-image: linear-gradient(90deg, transparent, rgba(243, 243, 243, 0.5), transparent);\n    top: 0;\n    left: -150px;\n    height: 100%;\n    width: 150px;\n    animation: ", " 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;\n  }\n"], ["\n  position: relative;\n  overflow: hidden;\n  transform: translate3d(0, 0, 0);\n  &:before {\n    content: \"\";\n    position: absolute;\n    background-image: linear-gradient(90deg, transparent, rgba(243, 243, 243, 0.5), transparent);\n    top: 0;\n    left: -150px;\n    height: 100%;\n    width: 150px;\n    animation: ", " 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;\n  }\n"])), waves);
+var Waves = styled__default['default'](Root)(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  position: relative;\n  overflow: hidden;\n  transform: translate3d(0, 0, 0);\n  &:before {\n    content: \"\";\n    position: absolute;\n    background-image: linear-gradient(90deg, transparent, rgba(10, 4, 52, 0.8), transparent);\n    top: 0;\n    left: -150px;\n    height: 100%;\n    width: 150px;\n    animation: ", " 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;\n  }\n"], ["\n  position: relative;\n  overflow: hidden;\n  transform: translate3d(0, 0, 0);\n  &:before {\n    content: \"\";\n    position: absolute;\n    background-image: linear-gradient(90deg, transparent, rgba(10, 4, 52, 0.8), transparent);\n    top: 0;\n    left: -150px;\n    height: 100%;\n    width: 150px;\n    animation: ", " 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;\n  }\n"])), waves);
 var Skeleton = function (_a) {
     var _b = _a.variant, variant$1 = _b === void 0 ? variant.RECT : _b, _c = _a.animation, animation$1 = _c === void 0 ? animation.PULSE : _c, props = __rest(_a, ["variant", "animation"]);
     if (animation$1 === animation.WAVES) {
@@ -1200,9 +1448,9 @@ var templateObject_1$s, templateObject_2$7, templateObject_3$3, templateObject_4
 
 var Handle = styled__default['default'].div(templateObject_1$t || (templateObject_1$t = __makeTemplateObject(["\n  background-color: ", ";\n  border-radius: 50%;\n  cursor: pointer;\n  height: 32px;\n  left: 4px;\n  position: absolute;\n  top: 4px;\n  transition: left 200ms ease-in;\n  width: 32px;\n  z-index: 1;\n"], ["\n  background-color: ", ";\n  border-radius: 50%;\n  cursor: pointer;\n  height: 32px;\n  left: 4px;\n  position: absolute;\n  top: 4px;\n  transition: left 200ms ease-in;\n  width: 32px;\n  z-index: 1;\n"])), function (_a) {
     var theme = _a.theme;
-    return theme.toggle.handleBackground;
+    return theme.colors.background;
 });
-var Input$1 = styled__default['default'].input(templateObject_2$8 || (templateObject_2$8 = __makeTemplateObject(["\n  cursor: pointer;\n  opacity: 0;\n  height: 100%;\n  position: absolute;\n  width: 100%;\n  z-index: 3;\n\n  &:checked + ", " {\n    left: calc(100% - 36px);\n  }\n\n  &:focus + ", " {\n    box-shadow: ", ";\n  }\n\n  &:hover + ", ":not(:disabled):not(:checked) {\n    box-shadow: ", ";\n  }\n"], ["\n  cursor: pointer;\n  opacity: 0;\n  height: 100%;\n  position: absolute;\n  width: 100%;\n  z-index: 3;\n\n  &:checked + ", " {\n    left: calc(100% - 36px);\n  }\n\n  &:focus + ", " {\n    box-shadow: ", ";\n  }\n\n  &:hover + ", ":not(:disabled):not(:checked) {\n    box-shadow: ", ";\n  }\n"])), Handle, Handle, function (_a) {
+var Input$1 = styled__default['default'].input(templateObject_2$8 || (templateObject_2$8 = __makeTemplateObject(["\n  cursor: pointer;\n  opacity: 0;\n  height: 100%;\n  position: absolute;\n  width: 100%;\n  z-index: 3;\n\n  &:checked + ", " {\n    left: calc(100% - 36px);\n    background: ", ";\n  }\n\n  &:focus + ", " {\n    box-shadow: ", ";\n  }\n\n  &:hover + ", ":not(:disabled):not(:checked) {\n    box-shadow: ", ";\n  }\n"], ["\n  cursor: pointer;\n  opacity: 0;\n  height: 100%;\n  position: absolute;\n  width: 100%;\n  z-index: 3;\n\n  &:checked + ", " {\n    left: calc(100% - 36px);\n    background: ", ";\n  }\n\n  &:focus + ", " {\n    box-shadow: ", ";\n  }\n\n  &:hover + ", ":not(:disabled):not(:checked) {\n    box-shadow: ", ";\n  }\n"])), Handle, lightColors.text, Handle, function (_a) {
     var theme = _a.theme;
     return theme.shadows.focus;
 }, Handle, function (_a) {
@@ -1211,7 +1459,7 @@ var Input$1 = styled__default['default'].input(templateObject_2$8 || (templateOb
 });
 var StyledToggle = styled__default['default'].div(templateObject_3$4 || (templateObject_3$4 = __makeTemplateObject(["\n  align-items: center;\n  background-color: ", ";\n  border-radius: 24px;\n  box-shadow: ", ";\n  cursor: pointer;\n  display: inline-flex;\n  height: 40px;\n  position: relative;\n  transition: background-color 200ms;\n  width: 72px;\n"], ["\n  align-items: center;\n  background-color: ", ";\n  border-radius: 24px;\n  box-shadow: ", ";\n  cursor: pointer;\n  display: inline-flex;\n  height: 40px;\n  position: relative;\n  transition: background-color 200ms;\n  width: 72px;\n"])), function (_a) {
     var theme = _a.theme, checked = _a.checked;
-    return theme.colors[checked ? "success" : "input"];
+    return theme.colors[checked ? "primary" : "input"];
 }, function (_a) {
     var theme = _a.theme;
     return theme.shadows.inset;
@@ -1546,51 +1794,6 @@ var useTable = function (columns, data, options) {
         pagination: state.pagination,
         toggleAllState: state.toggleAllState,
     };
-};
-
-var breakpointMap = {
-    xs: 370,
-    sm: 576,
-    md: 852,
-    lg: 968,
-    xl: 1080,
-};
-var breakpoints = Object.values(breakpointMap).map(function (breakpoint) { return breakpoint + "px"; });
-var mediaQueries = {
-    xs: "@media screen and (min-width: " + breakpointMap.xs + "px)",
-    sm: "@media screen and (min-width: " + breakpointMap.sm + "px)",
-    md: "@media screen and (min-width: " + breakpointMap.md + "px)",
-    lg: "@media screen and (min-width: " + breakpointMap.lg + "px)",
-    xl: "@media screen and (min-width: " + breakpointMap.xl + "px)",
-    nav: "@media screen and (min-width: " + breakpointMap.lg + "px)",
-};
-var shadows = {
-    level1: "0px 2px 12px -8px rgba(25, 19, 38, 0.1), 0px 1px 1px rgba(25, 19, 38, 0.05)",
-    active: "0px 0px 0px 1px #0098A1, 0px 0px 4px 8px rgba(31, 199, 212, 0.4)",
-    success: "0px 0px 0px 1px #31D0AA, 0px 0px 0px 4px rgba(49, 208, 170, 0.2)",
-    warning: "0px 0px 0px 1px #ED4B9E, 0px 0px 0px 4px rgba(237, 75, 158, 0.2)",
-    focus: "0px 0px 0px 1px #7645D9, 0px 0px 0px 4px rgba(118, 69, 217, 0.6)",
-    inset: "inset 0px 2px 2px -1px rgba(74, 74, 104, 0.1)",
-};
-var spacing = [0, 4, 8, 16, 24, 32, 48, 64];
-var radii = {
-    small: "4px",
-    default: "16px",
-    card: "32px",
-    circle: "50%",
-};
-var zIndices = {
-    dropdown: 10,
-    modal: 100,
-};
-var base = {
-    siteWidth: 1200,
-    breakpoints: breakpoints,
-    mediaQueries: mediaQueries,
-    spacing: spacing,
-    shadows: shadows,
-    radii: radii,
-    zIndices: zIndices,
 };
 
 /**
@@ -2715,13 +2918,13 @@ var types = {
     INFO: "info",
 };
 
-var _a$1;
-var alertTypeMap = (_a$1 = {},
-    _a$1[types.INFO] = variants$1.INFO,
-    _a$1[types.SUCCESS] = variants$1.SUCCESS,
-    _a$1[types.DANGER] = variants$1.DANGER,
-    _a$1[types.WARNING] = variants$1.WARNING,
-    _a$1);
+var _a$2;
+var alertTypeMap = (_a$2 = {},
+    _a$2[types.INFO] = variants$1.INFO,
+    _a$2[types.SUCCESS] = variants$1.SUCCESS,
+    _a$2[types.DANGER] = variants$1.DANGER,
+    _a$2[types.WARNING] = variants$1.WARNING,
+    _a$2);
 var StyledToast = styled__default['default'].div(templateObject_1$I || (templateObject_1$I = __makeTemplateObject(["\n  right: 16px;\n  position: fixed;\n  max-width: calc(100% - 32px);\n  transition: all 250ms ease-in;\n  width: 100%;\n\n  ", " {\n    max-width: 400px;\n  }\n"], ["\n  right: 16px;\n  position: fixed;\n  max-width: calc(100% - 32px);\n  transition: all 250ms ease-in;\n  width: 100%;\n\n  ", " {\n    max-width: 400px;\n  }\n"])), function (_a) {
     var theme = _a.theme;
     return theme.mediaQueries.sm;
@@ -2777,184 +2980,14 @@ var ToastContainer = function (_a) {
 };
 var templateObject_1$J;
 
-var ResetCSS = styled.createGlobalStyle(templateObject_1$K || (templateObject_1$K = __makeTemplateObject(["\n  /* prettier-ignore */\n  html, body, div, span, applet, object, iframe,\n  h1, h2, h3, h4, h5, h6, p, blockquote, pre,\n  a, abbr, acronym, address, big, cite, code,\n  del, dfn, em, img, ins, kbd, q, s, samp,\n  small, strike, strong, sub, sup, tt, var,\n  b, u, i, center,\n  dl, dt, dd, ol, ul, li,\n  fieldset, form, label, legend,\n  table, caption, tbody, tfoot, thead, tr, th, td,\n  article, aside, canvas, details, embed, \n  figure, figcaption, footer, header, hgroup, \n  menu, nav, output, ruby, section, summary,\n  time, mark, audio, video {\n    margin: 0;\n    padding: 0;\n    border: 0;\n    font-size: 100%;\n    vertical-align: baseline;\n  }\n  /* HTML5 display-role reset for older browsers */\n  /* prettier-ignore */\n  article, aside, details, figcaption, figure, \n  footer, header, hgroup, menu, nav, section {\n    display: block;\n  }\n  body {\n    line-height: 1;\n    font-size: 16px;\n  }\n  ol,\n  ul {\n    list-style: disc;\n    list-style-position: inside;\n  }\n  blockquote,\n  q {\n    quotes: none;\n  }\n  blockquote:before,\n  blockquote:after,\n  q:before,\n  q:after {\n    content: \"\";\n    content: none;\n  }\n  table {\n    border-collapse: collapse;\n    border-spacing: 0;\n  }\n  a {\n    color: inherit;\n    text-decoration: none;\n  }\n  [role=\"button\"] {\n    cursor: pointer;\n  }\n  *,\n  *::before,\n  *::after {\n    box-sizing: border-box;\n  }\n  * {\n    font-family: 'Kanit', sans-serif;\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n  }\n  /* Scrollbar */\n  ::-webkit-scrollbar {\n    width: 8px;\n  }\n  ::-webkit-scrollbar-thumb {\n    background: ", "; \n    border-radius: 8px;\n  }\n  ::-webkit-scrollbar-track {\n    box-shadow: inset 0 0 5px ", "; \n    border-radius: 10px;\n  }\n"], ["\n  /* prettier-ignore */\n  html, body, div, span, applet, object, iframe,\n  h1, h2, h3, h4, h5, h6, p, blockquote, pre,\n  a, abbr, acronym, address, big, cite, code,\n  del, dfn, em, img, ins, kbd, q, s, samp,\n  small, strike, strong, sub, sup, tt, var,\n  b, u, i, center,\n  dl, dt, dd, ol, ul, li,\n  fieldset, form, label, legend,\n  table, caption, tbody, tfoot, thead, tr, th, td,\n  article, aside, canvas, details, embed, \n  figure, figcaption, footer, header, hgroup, \n  menu, nav, output, ruby, section, summary,\n  time, mark, audio, video {\n    margin: 0;\n    padding: 0;\n    border: 0;\n    font-size: 100%;\n    vertical-align: baseline;\n  }\n  /* HTML5 display-role reset for older browsers */\n  /* prettier-ignore */\n  article, aside, details, figcaption, figure, \n  footer, header, hgroup, menu, nav, section {\n    display: block;\n  }\n  body {\n    line-height: 1;\n    font-size: 16px;\n  }\n  ol,\n  ul {\n    list-style: disc;\n    list-style-position: inside;\n  }\n  blockquote,\n  q {\n    quotes: none;\n  }\n  blockquote:before,\n  blockquote:after,\n  q:before,\n  q:after {\n    content: \"\";\n    content: none;\n  }\n  table {\n    border-collapse: collapse;\n    border-spacing: 0;\n  }\n  a {\n    color: inherit;\n    text-decoration: none;\n  }\n  [role=\"button\"] {\n    cursor: pointer;\n  }\n  *,\n  *::before,\n  *::after {\n    box-sizing: border-box;\n  }\n  * {\n    font-family: 'Kanit', sans-serif;\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n  }\n  /* Scrollbar */\n  ::-webkit-scrollbar {\n    width: 8px;\n  }\n  ::-webkit-scrollbar-thumb {\n    background: ", "; \n    border-radius: 8px;\n  }\n  ::-webkit-scrollbar-track {\n    box-shadow: inset 0 0 5px ", "; \n    border-radius: 10px;\n  }\n"])), function (_a) {
+var ResetCSS = styled.createGlobalStyle(templateObject_1$K || (templateObject_1$K = __makeTemplateObject(["\n  /* prettier-ignore */\n  html, body, div, span, applet, object, iframe,\n  h1, h2, h3, h4, h5, h6, p, blockquote, pre,\n  a, abbr, acronym, address, big, cite, code,\n  del, dfn, em, img, ins, kbd, q, s, samp,\n  small, strike, strong, sub, sup, tt, var,\n  b, u, i, center,\n  dl, dt, dd, ol, ul, li,\n  fieldset, form, label, legend,\n  table, caption, tbody, tfoot, thead, tr, th, td,\n  article, aside, canvas, details, embed, \n  figure, figcaption, footer, header, hgroup, \n  menu, nav, output, ruby, section, summary,\n  time, mark, audio, video {\n    margin: 0;\n    padding: 0;\n    border: 0;\n    font-size: 100%;\n    vertical-align: baseline;\n  }\n  /* HTML5 display-role reset for older browsers */\n  /* prettier-ignore */\n  article, aside, details, figcaption, figure, \n  footer, header, hgroup, menu, nav, section {\n    display: block;\n  }\n  body {\n    line-height: 1;\n    font-size: 16px;\n  }\n  ol,\n  ul {\n    list-style: disc;\n    list-style-position: inside;\n  }\n  blockquote,\n  q {\n    quotes: none;\n  }\n  blockquote:before,\n  blockquote:after,\n  q:before,\n  q:after {\n    content: \"\";\n    content: none;\n  }\n  table {\n    border-collapse: collapse;\n    border-spacing: 0;\n  }\n  a {\n    color: inherit;\n    text-decoration: none;\n  }\n  [role=\"button\"] {\n    cursor: pointer;\n  }\n  *,\n  *::before,\n  *::after {\n    box-sizing: border-box;\n  }\n  * {\n    font-family: 'Albert Sans', sans-serif;\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n  }\n  /* Scrollbar */\n  ::-webkit-scrollbar {\n    width: 4px;\n  }\n  ::-webkit-scrollbar-thumb {\n    background: ", "; \n    border-radius: 8px;\n  }\n  ::-webkit-scrollbar-track {\n    box-shadow: inset 0 0 5px ", "; \n    border-radius: 10px;\n  }\n"], ["\n  /* prettier-ignore */\n  html, body, div, span, applet, object, iframe,\n  h1, h2, h3, h4, h5, h6, p, blockquote, pre,\n  a, abbr, acronym, address, big, cite, code,\n  del, dfn, em, img, ins, kbd, q, s, samp,\n  small, strike, strong, sub, sup, tt, var,\n  b, u, i, center,\n  dl, dt, dd, ol, ul, li,\n  fieldset, form, label, legend,\n  table, caption, tbody, tfoot, thead, tr, th, td,\n  article, aside, canvas, details, embed, \n  figure, figcaption, footer, header, hgroup, \n  menu, nav, output, ruby, section, summary,\n  time, mark, audio, video {\n    margin: 0;\n    padding: 0;\n    border: 0;\n    font-size: 100%;\n    vertical-align: baseline;\n  }\n  /* HTML5 display-role reset for older browsers */\n  /* prettier-ignore */\n  article, aside, details, figcaption, figure, \n  footer, header, hgroup, menu, nav, section {\n    display: block;\n  }\n  body {\n    line-height: 1;\n    font-size: 16px;\n  }\n  ol,\n  ul {\n    list-style: disc;\n    list-style-position: inside;\n  }\n  blockquote,\n  q {\n    quotes: none;\n  }\n  blockquote:before,\n  blockquote:after,\n  q:before,\n  q:after {\n    content: \"\";\n    content: none;\n  }\n  table {\n    border-collapse: collapse;\n    border-spacing: 0;\n  }\n  a {\n    color: inherit;\n    text-decoration: none;\n  }\n  [role=\"button\"] {\n    cursor: pointer;\n  }\n  *,\n  *::before,\n  *::after {\n    box-sizing: border-box;\n  }\n  * {\n    font-family: 'Albert Sans', sans-serif;\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n  }\n  /* Scrollbar */\n  ::-webkit-scrollbar {\n    width: 4px;\n  }\n  ::-webkit-scrollbar-thumb {\n    background: ", "; \n    border-radius: 8px;\n  }\n  ::-webkit-scrollbar-track {\n    box-shadow: inset 0 0 5px ", "; \n    border-radius: 10px;\n  }\n"])), function (_a) {
     var theme = _a.theme;
-    return theme.colors.textSubtle;
+    return theme.colors.primary;
 }, function (_a) {
     var theme = _a.theme;
-    return theme.colors.input;
+    return theme.colors.primaryDark;
 });
 var templateObject_1$K;
-
-var baseColors = {
-    failure: "#CD1B3E",
-    failureBright: "#9A1530",
-    failureDark: "#420A23",
-    primary: "#1F17F7",
-    primaryBright: "#2D27C3",
-    primaryDark: "#0A0434",
-    secondary: "#8E067E",
-    secondaryBright: "#D501BB",
-    secondaryDark: "#440248",
-    success: "#98E31A",
-    successBright: "#649315",
-    successDark: "#314618",
-    warning: "#FFB237",
-};
-var brandColors = {
-    binance: "#bc0fc8",
-    pulse: "#bc0fc8",
-};
-var lightColors = __assign(__assign(__assign({}, baseColors), brandColors), { background: "#050317", backgroundDisabled: "#0D095A", contrast: "#241326", invertedContrast: "#FFFFFF", input: "#0F0749", tertiary: "#f4eff5", text: "#FFFFFF", textDisabled: "#c0bdc4", textSubtle: "#B8B6CB", borderColor: "#eae9eb", card: "#0F0749", gradients: {
-        bubblegum: "linear-gradient(139.73deg, #ebe6ff 0%, #fdefff 100%)",
-    } });
-var darkColors = __assign(__assign(__assign({}, baseColors), brandColors), { secondary: "#bc0fc8", background: "green", backgroundDisabled: "#423742", contrast: "#FFFFFF", invertedContrast: "#261325", input: "#573f5a", primaryDark: "#0098A1", tertiary: "#473542", text: "#f8e2fc", textDisabled: "#6f6171", textSubtle: "#d2c4d4", borderColor: "#634b63", card: "#2c262c", gradients: {
-        bubblegum: "linear-gradient(139.73deg, #45315c 0%, #542a50 100%)",
-    } });
-
-var light = {
-    background: lightColors.card,
-};
-var dark = {
-    background: darkColors.card,
-};
-
-var _a$2, _b;
-var PRIMARY = variants.PRIMARY, SECONDARY = variants.SECONDARY, TERTIARY = variants.TERTIARY, TEXT = variants.TEXT, DANGER = variants.DANGER, SUBTLE = variants.SUBTLE, SUCCESS = variants.SUCCESS;
-var light$1 = (_a$2 = {},
-    _a$2[PRIMARY] = {
-        background: lightColors.primary,
-        backgroundActive: lightColors.input,
-        backgroundHover: lightColors.primaryBright,
-        border: 0,
-        borderColorHover: "currentColor",
-        boxShadow: "inset 0px -1px 0px rgba(14, 14, 44, 0.4)",
-        boxShadowActive: "inset 0px -1px 0px rgba(14, 14, 44, 0.4)",
-        color: lightColors.text,
-    },
-    _a$2[SECONDARY] = {
-        background: "transparent",
-        backgroundActive: "transparent",
-        backgroundHover: "transparent",
-        border: "2px solid " + lightColors.primary,
-        borderColorHover: lightColors.primaryBright,
-        boxShadow: "none",
-        boxShadowActive: "none",
-        color: lightColors.text,
-    },
-    _a$2[TERTIARY] = {
-        background: lightColors.secondaryBright,
-        backgroundActive: lightColors.secondaryDark,
-        backgroundHover: lightColors.secondary,
-        border: "2px solid " + lightColors.secondary,
-        borderColorHover: "currentColor",
-        boxShadow: "none",
-        boxShadowActive: "none",
-        color: lightColors.text,
-    },
-    _a$2[TEXT] = {
-        background: "transparent",
-        backgroundActive: "transparent",
-        backgroundHover: lightColors.primaryDark,
-        border: 0,
-        borderColorHover: "currentColor",
-        boxShadow: "none",
-        boxShadowActive: "none",
-        color: lightColors.text,
-    },
-    _a$2[DANGER] = {
-        background: lightColors.failure,
-        backgroundActive: lightColors.failureDark,
-        backgroundHover: lightColors.failureBright,
-        border: 0,
-        borderColorHover: "currentColor",
-        boxShadow: "none",
-        boxShadowActive: "none",
-        color: "#FFFFFF",
-    },
-    _a$2[SUBTLE] = {
-        background: lightColors.textSubtle,
-        backgroundActive: lightColors.textSubtle + "D9",
-        backgroundHover: lightColors.textSubtle + "B3",
-        border: 0,
-        borderColorHover: "currentColor",
-        boxShadow: "none",
-        boxShadowActive: "none",
-        color: "#FFFFFF",
-    },
-    _a$2[SUCCESS] = {
-        background: lightColors.success,
-        backgroundActive: lightColors.successDark,
-        backgroundHover: lightColors.successBright,
-        border: 0,
-        borderColorHover: "currentColor",
-        boxShadow: "none",
-        boxShadowActive: "none",
-        color: "#FFFFFF",
-    },
-    _a$2);
-var dark$1 = (_b = {},
-    _b[PRIMARY] = __assign({}, light$1.primary),
-    _b[SECONDARY] = __assign({}, light$1.secondary),
-    _b[TERTIARY] = __assign(__assign({}, light$1.tertiary), { background: darkColors.tertiary, backgroundActive: darkColors.tertiary, backgroundHover: darkColors.tertiary, color: darkColors.primary }),
-    _b[TEXT] = __assign(__assign({}, light$1.text), { backgroundHover: darkColors.tertiary }),
-    _b[DANGER] = __assign({}, light$1.danger),
-    _b[SUBTLE] = __assign({}, light$1.subtle),
-    _b[SUCCESS] = __assign({}, light$1.success),
-    _b);
-
-var light$2 = {
-    background: lightColors.card,
-    boxShadow: "0px 2px 12px -8px rgba(25, 19, 38, 0.1), 0px 1px 1px rgba(25, 19, 38, 0.05)",
-    boxShadowActive: shadows.active,
-    boxShadowSuccess: shadows.success,
-    boxShadowWarning: shadows.warning,
-    cardHeaderBackground: "linear-gradient(111.68deg, #F2ECF2 0%, #E8F2F6 100%)",
-    dropShadow: "drop-shadow(0px 1px 4px rgba(25, 19, 38, 0.15))",
-};
-var dark$2 = {
-    background: darkColors.card,
-    boxShadow: "0px 2px 12px -8px rgba(25, 19, 38, 0.1), 0px 1px 1px rgba(25, 19, 38, 0.05)",
-    boxShadowActive: shadows.active,
-    boxShadowSuccess: shadows.success,
-    boxShadowWarning: shadows.warning,
-    cardHeaderBackground: "linear-gradient(166.77deg, #3B4155 0%, #3A3045 100%)",
-    dropShadow: "drop-shadow(0px 1px 4px rgba(25, 19, 38, 0.15))",
-};
-
-var light$3 = {
-    handleBackground: lightColors.card,
-};
-var dark$3 = {
-    handleBackground: darkColors.card,
-};
-
-var light$4 = {
-    handleBackground: lightColors.card,
-};
-var dark$4 = {
-    handleBackground: darkColors.card,
-};
-
-var light$5 = {
-    background: lightColors.card,
-    hover: "#EEEAF4",
-};
-var dark$5 = {
-    background: darkColors.card,
-    hover: "#473d5d",
-};
-
-var light$6 = {
-    background: lightColors.card,
-};
-var dark$6 = {
-    background: darkColors.card,
-};
-
-var darkTheme = __assign(__assign({}, base), { isDark: true, alert: dark, button: dark$1, colors: darkColors, card: dark$2, toggle: dark$4, nav: dark$5, modal: dark$6, radio: dark$3 });
-
-var lightTheme = __assign(__assign({}, base), { isDark: false, alert: light, button: light$1, colors: lightColors, card: light$2, toggle: light$4, nav: light$5, modal: light$6, radio: light$3 });
 
 exports.AddIcon = Icon$4;
 exports.Alert = Alert;

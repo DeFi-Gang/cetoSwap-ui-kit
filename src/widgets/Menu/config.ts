@@ -117,7 +117,7 @@ export const linksCeto = [
   {
     label: "Bridge",
     icon: "FarmIcon",
-    href: "/ifo/history",
+    href: "/bridge",
   },
   {
     label: "Trade",
@@ -125,11 +125,11 @@ export const linksCeto = [
     items: [
       {
         label: "Exchange",
-        href: "https://exchange.pancakeswap.finance",
+        href: "/exchange",
       },
       {
         label: "Liquidity",
-        href: "https://exchange.pancakeswap.finance/#/pool",
+        href: "/liquidity",
       },
     ],
   },
@@ -144,19 +144,19 @@ export const linksCeto = [
     items: [
       {
         label: "Overview",
-        href: "https://pancakeswap.info",
+        href: "/overview",
       },
       {
         label: "Tokens",
-        href: "https://pancakeswap.info/tokens",
+        href: "/tokens",
       },
       {
         label: "Pairs",
-        href: "https://pancakeswap.info/pairs",
+        href: "/pairs",
       },
       {
         label: "Accounts",
-        href: "https://pancakeswap.info/accounts",
+        href: "/accounts",
       },
     ],
   },
@@ -238,7 +238,8 @@ export const socials = [
 ];
 
 export const MENU_HEIGHT = 80;
-export const FOOTER_HEIGHT = 269;
+export const FOOTER_HEIGHT = 138;
+export const FOOTER_HEIGHT_MOBILE = 243;
 export const MENU_ENTRY_HEIGHT = 22;
-export const SIDEBAR_WIDTH_FULL = 240;
+export const SIDEBAR_WIDTH_FULL = 220;
 export const SIDEBAR_WIDTH_REDUCED = 56;

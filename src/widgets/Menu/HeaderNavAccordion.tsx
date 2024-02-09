@@ -1,6 +1,6 @@
 import React, { FC, memo, PropsWithChildren } from "react";
 import styled from "styled-components";
-import { MENU_ENTRY_HEIGHT, MENU_HEIGHT } from "./config";
+import { MENU_ENTRY_HEIGHT } from "./config";
 import { ArrowDropDownIcon, ArrowDropUpIcon } from "../../components/Svg";
 import { NavHeaderEntry } from "./NavHeaderEntry";
 
@@ -33,7 +33,6 @@ const AccordionContent = styled.div<{ isOpen: boolean; maxHeight: number }>`
   overflow: hidden;
   background-color: ${({ theme }) => theme.colors.background};
   padding: ${({ isOpen }) => (isOpen ? `16px` : 0)};
-  border: 1px soild red;
 `;
 
 const HeaderNavAccordion: FC<Props> = ({ label, isOpen, handleClick, children, className }) => {

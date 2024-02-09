@@ -3,8 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { LogoIcon } from "../../components/Svg";
 import Flex from "../../components/Flex/Flex";
-import { HamburgerIcon, HamburgerCloseIcon, LogoIcon as LogoWithText } from "./icons";
-import MenuButton from "./MenuButton";
+import { LogoIcon as LogoWithText } from "./icons";
 
 interface Props {
   href: string;
@@ -39,19 +38,12 @@ const Logo: React.FC<Props> = ({ href }) => {
 
   return (
     <Flex>
-      {/*<MenuButton aria-label="Toggle menu" onClick={togglePush} mr="24px">*/}
-      {/*  {isPushed ? (*/}
-      {/*    <HamburgerCloseIcon width="24px" color="textSubtle" />*/}
-      {/*  ) : (*/}
-      {/*    <HamburgerIcon width="24px" color="textSubtle" />*/}
-      {/*  )}*/}
-      {/*</MenuButton>*/}
       {isAbsoluteUrl ? (
-        <StyledLink as="a" href={href} aria-label="Pancake home page">
+        <StyledLink as="a" href={href} aria-label="Cetoswap home page">
           {innerLogo}
         </StyledLink>
       ) : (
-        <StyledLink to={href} aria-label="Pancake home page">
+        <StyledLink to={href} aria-label="Cetoswap home page">
           {innerLogo}
         </StyledLink>
       )}

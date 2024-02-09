@@ -9,7 +9,7 @@ import HeaderNavAccordion from "./HeaderNavAccordion";
 import { HeaderNavProps } from "./types";
 
 interface Props extends HeaderNavProps {
-  isMobile: boolean;
+  handleOpenAccordion: (close?: boolean) => void;
 }
 
 const Container = styled.div`
@@ -19,17 +19,20 @@ const Container = styled.div`
   gap: 16px;
 `;
 
-const HeaderNav: React.FC<Props> = ({ isMobile, links }) => {
+const HeaderNav: React.FC<Props> = ({ links, handleOpenAccordion }) => {
   const location = useLocation();
   const [openAccordionIndex, setOpenAccordionIndex] = useState<number | null>(null);
 
   const handleClick = useCallback(
-    (index: number) => {
-      if (!isMobile) {
-        setOpenAccordionIndex(openAccordionIndex === index ? null : index);
+    (index: number, fromAccordion?: boolean) => {
+      setOpenAccordionIndex(openAccordionIndex === index ? null : index);
+      if (!fromAccordion) {
+        handleOpenAccordion(true);
+      } else {
+        handleOpenAccordion(openAccordionIndex === index);
       }
     },
-    [isMobile, openAccordionIndex]
+    [handleOpenAccordion, openAccordionIndex]
   );
 
   return (
@@ -41,7 +44,7 @@ const HeaderNav: React.FC<Props> = ({ isMobile, links }) => {
           return (
             <HeaderNavAccordion
               isOpen={openAccordionIndex === index}
-              handleClick={() => handleClick(index)}
+              handleClick={() => handleClick(index, true)}
               key={entry.label}
               label={entry.label}
               className={calloutClass}

@@ -11,6 +11,8 @@ export declare const sizes: {
     LG: string;
     XL: string;
     XXL: string;
+    XXXL: string;
+    XXXXL: string;
 };
 export declare type Tags = typeof tags[keyof typeof tags];
 export declare type Sizes = typeof sizes[keyof typeof sizes];

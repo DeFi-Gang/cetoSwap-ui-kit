@@ -38,8 +38,6 @@ const StyledNav = styled.nav<{ scrolled: boolean }>`
 
 const BodyWrapper = styled.div`
   position: relative;
-  display: flex;
-  background-color: red;
   width: 100%;
   min-height: calc(100vh - ${MENU_HEIGHT}px - ${FOOTER_HEIGHT}px);
 `;

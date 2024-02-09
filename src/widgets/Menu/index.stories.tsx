@@ -58,12 +58,7 @@ export const Connected: React.FC = () => {
 export const NotConnected: React.FC = () => {
   return (
     <BrowserRouter>
-      <Menu
-        account={null}
-        login={noop}
-        logout={noop}
-        links={linksCeto}
-      >
+      <Menu account={null} login={noop} logout={noop} links={linksCeto}>
         <div>
           <h1>Page body</h1>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore

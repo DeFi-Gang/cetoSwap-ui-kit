@@ -7,7 +7,7 @@ const Container = styled.div`
   flex-direction: row;
   align-items: center;
   height: ${FOOTER_HEIGHT}px;
-  background-color: red;
+  background-color: yellow;
 `;
 
 const Footer: FC = () => {

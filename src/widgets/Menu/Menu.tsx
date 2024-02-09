@@ -29,6 +29,8 @@ const StyledNav = styled.nav<{ scrolled: boolean }>`
   padding-left: 30px;
   padding-right: 30px;
   width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
   height: ${MENU_HEIGHT}px;
   background-color: ${({ theme, scrolled }) => (scrolled ? theme.colors.headerBackground : "transparent")};
   z-index: 20;
@@ -39,8 +41,7 @@ const BodyWrapper = styled.div`
   display: flex;
   background-color: red;
   width: 100%;
-  minheight: calc(100vh - ${MENU_HEIGHT}px - ${FOOTER_HEIGHT}px);
-  flex-grow: 1;
+  min-height: calc(100vh - ${MENU_HEIGHT}px - ${FOOTER_HEIGHT}px);
 `;
 
 const MobileOnlyOverlay = styled(Overlay)`

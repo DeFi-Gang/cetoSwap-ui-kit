@@ -56,7 +56,7 @@ const Menu: React.FC<NavProps> = ({ account, login, logout, links, profile, chil
   const isMobile = isXl === false;
   const [scrolled, setScrolled] = useState(false);
   const refPrevOffset = useRef(window.pageYOffset);
-  console.log(scrolled);
+
   useEffect(() => {
     const handleScroll = () => {
       const currentOffset = window.pageYOffset;

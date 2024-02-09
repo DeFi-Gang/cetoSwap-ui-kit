@@ -15,6 +15,8 @@ export const Sizes: React.FC = () => {
       <Heading size="lg">Size lg</Heading>
       <Heading size="xl">Size xl</Heading>
       <Heading size="xxl">Size xxl</Heading>
+      <Heading size="xxxl">Size xxxl</Heading>
+      <Heading size="xxxxl">Size xxxxl</Heading>
     </div>
   );
 };

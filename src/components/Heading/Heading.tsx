@@ -15,13 +15,21 @@ const style = {
   [sizes.XXL]: {
     fontSize: "64px",
   },
+  [sizes.XXXL]: {
+    fontSize: "100px",
+  },
+  [sizes.XXXXL]: {
+    fontSize: "130px",
+  },
 };
 
 const Heading = styled(Text).attrs({ bold: true })<HeadingProps>`
+  @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap");
+    
   ${({ size }) => style[size || sizes.MD]}
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.1;
-  font-family: "Orbitron", sans-serif;
+  font-family: 'Orbitron';
 `;
 
 Heading.defaultProps = {

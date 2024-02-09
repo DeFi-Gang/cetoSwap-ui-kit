@@ -1,8 +1,8 @@
 export const links = [
   {
-    label: "Home",
-    icon: "HomeIcon",
-    href: "/",
+    label: "Bridge",
+    icon: "FarmIcon",
+    href: "/ifo/history",
   },
   {
     label: "Trade",
@@ -113,6 +113,55 @@ export const links = [
   },
 ];
 
+export const linksCeto = [
+  {
+    label: "Bridge",
+    icon: "FarmIcon",
+    href: "/ifo/history",
+  },
+  {
+    label: "Trade",
+    icon: "TradeIcon",
+    items: [
+      {
+        label: "Exchange",
+        href: "https://exchange.pancakeswap.finance",
+      },
+      {
+        label: "Liquidity",
+        href: "https://exchange.pancakeswap.finance/#/pool",
+      },
+    ],
+  },
+  {
+    label: "Farms",
+    icon: "FarmIcon",
+    href: "/farms",
+  },
+  {
+    label: "Info",
+    icon: "InfoIcon",
+    items: [
+      {
+        label: "Overview",
+        href: "https://pancakeswap.info",
+      },
+      {
+        label: "Tokens",
+        href: "https://pancakeswap.info/tokens",
+      },
+      {
+        label: "Pairs",
+        href: "https://pancakeswap.info/pairs",
+      },
+      {
+        label: "Accounts",
+        href: "https://pancakeswap.info/accounts",
+      },
+    ],
+  },
+];
+
 export const socials = [
   {
     label: "Telegram",
@@ -188,7 +237,8 @@ export const socials = [
   // },
 ];
 
-export const MENU_HEIGHT = 64;
-export const MENU_ENTRY_HEIGHT = 48;
+export const MENU_HEIGHT = 80;
+export const FOOTER_HEIGHT = 269;
+export const MENU_ENTRY_HEIGHT = 22;
 export const SIDEBAR_WIDTH_FULL = 240;
 export const SIDEBAR_WIDTH_REDUCED = 56;

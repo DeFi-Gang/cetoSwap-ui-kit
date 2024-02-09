@@ -7,7 +7,7 @@ import Text from "../../components/Text/Text";
 import Menu from "./Menu";
 import { MenuEntry } from "./MenuEntry";
 import { LangType } from "./types";
-import { links } from "./config";
+import { links, linksCeto } from "./config";
 
 export default {
   title: "Widgets/Menu",
@@ -24,13 +24,12 @@ export const Connected: React.FC = () => {
         account="0xbdda50183d817c3289f895a4472eb475967dc980"
         login={noop}
         logout={noop}
-        isDark={false}
         toggleTheme={noop}
         langs={langs}
         setLang={noop}
         currentLang="EN"
         cakePriceUsd={0.23158668932877668}
-        links={links}
+        links={linksCeto}
         profile={null}
       >
         <div>
@@ -63,12 +62,7 @@ export const NotConnected: React.FC = () => {
         account={null}
         login={noop}
         logout={noop}
-        isDark
-        toggleTheme={noop}
-        langs={langs}
-        setLang={noop}
-        currentLang="EN"
-        links={links}
+        links={linksCeto}
       >
         <div>
           <h1>Page body</h1>
@@ -94,13 +88,7 @@ export const WithNoProfile: React.FC = () => {
         account="0xbdda50183d817c3289f895a4472eb475967dc980"
         login={noop}
         logout={noop}
-        isDark={false}
-        toggleTheme={noop}
-        langs={langs}
-        setLang={noop}
-        currentLang="EN"
-        cakePriceUsd={0.23158668932877668}
-        links={links}
+        links={linksCeto}
         profile={{
           profileLink: "/profile",
           noProfileLink: "/no-profile",
@@ -136,12 +124,6 @@ export const WithProfile: React.FC = () => {
         account="0xbdda50183d817c3289f895a4472eb475967dc980"
         login={noop}
         logout={noop}
-        isDark={false}
-        toggleTheme={noop}
-        langs={langs}
-        setLang={noop}
-        currentLang="EN"
-        cakePriceUsd={0.23158668932877668}
         links={links}
         profile={{
           username: "pancakeswap",

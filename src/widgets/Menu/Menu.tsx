@@ -23,6 +23,14 @@ const Wrapper = styled.div`
 const StyledNav = styled.nav<{ scrolled: boolean }>`
   position: sticky;
   top: 0;
+  width: 100%;
+  margin: 0 auto;
+  height: ${MENU_HEIGHT}px;
+  background-color: ${({ theme, scrolled }) => (scrolled ? theme.colors.headerBackground : "transparent")};
+  z-index: 20;
+`;
+
+const StyledNavContainer = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -31,9 +39,7 @@ const StyledNav = styled.nav<{ scrolled: boolean }>`
   width: 100%;
   max-width: 1920px;
   margin: 0 auto;
-  height: ${MENU_HEIGHT}px;
-  background-color: ${({ theme, scrolled }) => (scrolled ? theme.colors.headerBackground : "transparent")};
-  z-index: 20;
+  height: 100%;
 `;
 
 const BodyWrapper = styled.div`
@@ -78,12 +84,14 @@ const Menu: React.FC<NavProps> = ({ account, login, logout, links, profile, chil
   return (
     <Wrapper>
       <StyledNav scrolled={scrolled}>
-        <Logo href={homeLink?.href ?? "/"} />
-        <HeaderNav links={links} isMobile={isMobile} />
-        <Flex>
-          <UserBlock account={account} login={login} logout={logout} />
-          {profile && <Avatar profile={profile} />}
-        </Flex>
+        <StyledNavContainer>
+          <Logo href={homeLink?.href ?? "/"} />
+          <HeaderNav links={links} isMobile={isMobile} />
+          <Flex>
+            <UserBlock account={account} login={login} logout={logout} />
+            {profile && <Avatar profile={profile} />}
+          </Flex>
+        </StyledNavContainer>
       </StyledNav>
       <BodyWrapper>
         {/*<Panel*/}

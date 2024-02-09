@@ -1,8 +1,10 @@
 import React, { FC, memo, PropsWithChildren } from "react";
 import styled from "styled-components";
-import { MENU_ENTRY_HEIGHT } from "./config";
+
 import { ArrowDropDownIcon, ArrowDropUpIcon } from "../../components/Svg";
 import { NavHeaderEntry } from "./NavHeaderEntry";
+
+import { MENU_ENTRY_HEIGHT } from "./config";
 
 interface Props extends PropsWithChildren<unknown> {
   label: string;

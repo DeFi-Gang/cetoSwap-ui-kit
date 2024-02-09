@@ -2,10 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 
-import { LinkLabel } from "./MenuEntry";
+import { LinkLabel, MobileMenuEntry } from "./MobileMenuEntry";
 import MenuLink from "./MenuLink";
 import MobileAccordion from "./MobileAccordion";
-import { MobileMenuEntry } from "./MobileMenuEntry";
 
 import { HeaderNavProps, PushedProps } from "./types";
 

@@ -29,26 +29,6 @@ export interface MenuSubEntry {
   openTab?: boolean;
 }
 
-export interface MenuEntry {
-  label: string;
-  icon: string;
-  items?: MenuSubEntry[];
-  href?: string;
-  calloutClass?: string;
-  initialOpenState?: boolean;
-}
-
-export interface PanelProps {
-  isDark: boolean;
-  toggleTheme: (isDark: boolean) => void;
-  cakePriceUsd?: number;
-  currentLang: string;
-  langs: LangType[];
-  setLang: (lang: LangType) => void;
-  links: Array<MenuEntry>;
-  priceLink: string;
-}
-
 export interface NavProps extends HeaderNavProps {
   account?: string;
   login: Login;

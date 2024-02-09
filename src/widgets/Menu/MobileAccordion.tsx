@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { MENU_ENTRY_HEIGHT } from "./config";
-import { LinkLabel } from "./MenuEntry";
+import { LinkLabel, MobileMenuEntry } from "./MobileMenuEntry";
 import { ArrowDropDownIcon, ArrowDropUpIcon } from "../../components/Svg";
-import { MobileMenuEntry } from "./MobileMenuEntry";
 
 interface Props {
   label: string;

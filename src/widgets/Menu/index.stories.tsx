@@ -1,11 +1,9 @@
 import React from "react";
 import noop from "lodash/noop";
 import { BrowserRouter } from "react-router-dom";
-import Flex from "../../components/Flex/Flex";
 import Heading from "../../components/Heading/Heading";
 import Text from "../../components/Text/Text";
 import Menu from "./Menu";
-import { MenuEntry } from "./MenuEntry";
 import { LangType } from "./types";
 import { links, linksCeto } from "./config";
 
@@ -147,15 +145,5 @@ export const WithProfile: React.FC = () => {
         </div>
       </Menu>
     </BrowserRouter>
-  );
-};
-
-export const MenuEntryComponent: React.FC = () => {
-  return (
-    <Flex justifyContent="space-between" p="16px" style={{ backgroundColor: "wheat" }}>
-      <MenuEntry>Default</MenuEntry>
-      <MenuEntry secondary>Secondary</MenuEntry>
-      <MenuEntry isActive>isActive</MenuEntry>
-    </Flex>
   );
 };

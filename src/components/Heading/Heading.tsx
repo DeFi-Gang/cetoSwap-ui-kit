@@ -25,11 +25,11 @@ const style = {
 
 const Heading = styled(Text).attrs({ bold: true })<HeadingProps>`
   @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap");
-    
+
   ${({ size }) => style[size || sizes.MD]}
   font-weight: 700;
   line-height: 1.1;
-  font-family: 'Orbitron';
+  font-family: "Orbitron";
 `;
 
 Heading.defaultProps = {

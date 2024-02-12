@@ -15,7 +15,7 @@ import { HamburgerCloseIcon, HamburgerIcon } from "./icons";
 
 import { useMatchBreakpoints } from "../../hooks";
 
-import { FOOTER_HEIGHT, FOOTER_HEIGHT_MOBILE, MENU_HEIGHT, socials } from "./config";
+import { FOOTER_HEIGHT, FOOTER_HEIGHT_MOBILE, MENU_HEIGHT } from "./config";
 import { NavProps } from "./types";
 
 const Wrapper = styled.div`

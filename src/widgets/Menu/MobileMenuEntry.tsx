@@ -17,20 +17,21 @@ const rainbowAnimation = keyframes`
   }
 `;
 
-const LinkLabel = styled.div<{ isPushed: boolean }>`
-  color: ${({ isPushed, theme }) => (isPushed ? theme.colors.textSubtle : "transparent")};
+const LinkLabel = styled.div`
+  color: ${({ theme }) => theme.colors.textSubtle};
   transition: color 0.4s;
-  flex-grow: 1;
 `;
 
-const MenuEntry = styled.div<Props>`
+const MobileMenuEntry = styled.div<Props>`
   cursor: pointer;
   display: flex;
   align-items: center;
+  gap: 4px;
+  justify-content: flex-start;
   height: ${MENU_ENTRY_HEIGHT}px;
   padding: ${({ secondary }) => (secondary ? "0 32px" : "0 16px")};
-  font-size: ${({ secondary }) => (secondary ? "14px" : "16px")};
-  background-color: ${({ secondary, theme }) => (secondary ? theme.colors.background : "transparent")};
+  font-size: 16px;
+  background-color: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.textSubtle};
   box-shadow: ${({ isActive, theme }) => (isActive ? `inset 4px 0px 0px ${theme.colors.primary}` : "none")};
 
@@ -42,11 +43,17 @@ const MenuEntry = styled.div<Props>`
   }
 
   svg {
-    fill: ${({ theme }) => theme.colors.textSubtle};
+    width: 10px;
+    fill: none;
+    svg {
+      path {
+        stroke: ${({ theme, isActive }) => (isActive ? theme.colors.primaryBright : theme.colors.primaryBright)};
+      }
+    }
   }
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.tertiary};
+    background-color: ${({ theme }) => theme.colors.backgroundDisabled};
   }
 
   // Safari fix
@@ -60,10 +67,10 @@ const MenuEntry = styled.div<Props>`
     font-weight: bold;
   }
 `;
-MenuEntry.defaultProps = {
+MobileMenuEntry.defaultProps = {
   secondary: false,
   isActive: false,
   role: "button",
 };
 
-export { MenuEntry, LinkLabel };
+export { MobileMenuEntry, LinkLabel };

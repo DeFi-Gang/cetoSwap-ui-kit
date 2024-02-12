@@ -6,6 +6,7 @@ export type MediaQueries = {
   md: string;
   lg: string;
   xl: string;
+  xxl: string;
   nav: string;
 };
 
@@ -56,6 +57,7 @@ export type Colors = {
   textSubtle: string;
   borderColor: string;
   card: string;
+  headerBackground: string;
 
   // Gradients
   gradients: Gradients;

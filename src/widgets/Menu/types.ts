@@ -1,4 +1,5 @@
 import { Login } from "../WalletModal/types";
+import { IconType } from "./icons/types";
 
 export interface LangType {
   code: string;
@@ -29,21 +30,31 @@ export interface MenuSubEntry {
   openTab?: boolean;
 }
 
-export interface NavProps extends HeaderNavProps {
-  account?: string;
-  login: Login;
-  profile?: Profile;
-  logout: () => void;
-}
-
-export interface HeaderNavProps {
-  links: Array<NavEntry>;
-}
-
 export interface NavEntry {
   label: string;
   items?: MenuSubEntry[];
   href?: string;
   calloutClass?: string;
   initialOpenState?: boolean;
+}
+
+export interface HeaderNavProps {
+  links: Array<NavEntry>;
+}
+
+export interface SocialEntry {
+  label: string;
+  href: string;
+  icon: IconType;
+}
+
+export interface FooterLinks {
+  socialLinks: Array<SocialEntry>;
+}
+
+export interface NavProps extends HeaderNavProps, FooterLinks {
+  account?: string;
+  login: Login;
+  profile?: Profile;
+  logout: () => void;
 }

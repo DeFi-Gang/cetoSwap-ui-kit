@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef, useCallback, FC, memo } from "react";
 import styled from "styled-components";
 import throttle from "lodash/throttle";
 
@@ -15,7 +15,7 @@ import { HamburgerCloseIcon, HamburgerIcon } from "./icons";
 
 import { useMatchBreakpoints } from "../../hooks";
 
-import { FOOTER_HEIGHT, FOOTER_HEIGHT_MOBILE, MENU_HEIGHT } from "./config";
+import { FOOTER_HEIGHT, FOOTER_HEIGHT_MOBILE, MENU_HEIGHT, socials } from "./config";
 import { NavProps } from "./types";
 
 const Wrapper = styled.div`
@@ -69,7 +69,7 @@ const MobileOnlyOverlay = styled(Overlay)`
   }
 `;
 
-const Menu: React.FC<NavProps> = ({ account, login, logout, links, profile, children }) => {
+const Menu: FC<NavProps> = ({ account, login, logout, links, socialLinks, profile, children }) => {
   const { isXs, isSm, isMd } = useMatchBreakpoints();
   const isMobile = isXs || isSm || isMd;
 
@@ -161,9 +161,9 @@ const Menu: React.FC<NavProps> = ({ account, login, logout, links, profile, chil
         {children}
         <MobileOnlyOverlay show={isMobileMenuOpen} onClick={handleMobileOverlayClick} role="presentation" />
       </BodyWrapper>
-      <Footer />
+      <Footer socialLinks={socialLinks} logoLink={homeLink?.href ?? "/"} />
     </Wrapper>
   );
 };
 
-export default Menu;
+export default memo(Menu);

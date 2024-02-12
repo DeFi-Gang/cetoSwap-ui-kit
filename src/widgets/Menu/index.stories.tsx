@@ -5,7 +5,7 @@ import Heading from "../../components/Heading/Heading";
 import Text from "../../components/Text/Text";
 import Menu from "./Menu";
 import { LangType } from "./types";
-import { links, linksCeto } from "./config";
+import { links, linksCeto, socials } from "./config";
 
 export default {
   title: "Widgets/Menu",
@@ -28,6 +28,7 @@ export const Connected: React.FC = () => {
         currentLang="EN"
         cakePriceUsd={0.23158668932877668}
         links={linksCeto}
+        socialLinks={socials}
         profile={null}
       >
         <div>
@@ -82,6 +83,7 @@ export const WithNoProfile: React.FC = () => {
         login={noop}
         logout={noop}
         links={linksCeto}
+        socialLinks={socials}
         profile={{
           profileLink: "/profile",
           noProfileLink: "/no-profile",
@@ -118,6 +120,7 @@ export const WithProfile: React.FC = () => {
         login={noop}
         logout={noop}
         links={links}
+        socialLinks={socials}
         profile={{
           username: "pancakeswap",
           image: "https://pancakeswap.finance/images/nfts/blueberries-preview.png",

@@ -93,6 +93,17 @@ const Menu: FC<NavProps> = ({ account, login, logout, links, socialLinks, profil
     };
   }, []);
 
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isMobileMenuOpen]);
+
   // Find the home link if provided
   const homeLink = links.find((link) => link.label === "Home");
 
@@ -121,7 +132,7 @@ const Menu: FC<NavProps> = ({ account, login, logout, links, socialLinks, profil
 
   return (
     <Wrapper>
-      <StyledNav scrolled={scrolled} filledBackground={filledBackground}>
+      <StyledNav scrolled={scrolled} filledBackground={filledBackground || isMobileMenuOpen}>
         <StyledNavContainer>
           <Logo href={homeLink?.href ?? "/"} />
           {isMobile ? (

@@ -20,12 +20,11 @@ const StyledModal = styled.div`
   border-radius: 4px;
   width: 100%;
   z-index: ${({ theme }) => theme.zIndices.modal};
-
   overflow-y: auto;
+    
   ${({ theme }) => theme.mediaQueries.xs} {
-    width: auto;
-    min-width: 360px;
-    max-width: 100%;
+    width: 100%;
+    max-width: 530px;
   }
 `;
 

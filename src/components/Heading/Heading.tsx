@@ -3,6 +3,12 @@ import Text from "../Text/Text";
 import { tags, sizes, HeadingProps } from "./types";
 
 const style = {
+  [sizes.XS]: {
+    fontSize: "14px",
+  },
+  [sizes.SM]: {
+  fontSize: "16px",
+  },
   [sizes.MD]: {
     fontSize: "20px",
   },

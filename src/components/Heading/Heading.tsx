@@ -7,7 +7,7 @@ const style = {
     fontSize: "14px",
   },
   [sizes.SM]: {
-  fontSize: "16px",
+    fontSize: "16px",
   },
   [sizes.MD]: {
     fontSize: "20px",

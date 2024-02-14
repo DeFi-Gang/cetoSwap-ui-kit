@@ -21,7 +21,7 @@ const StyledModal = styled.div`
   width: 100%;
   z-index: ${({ theme }) => theme.zIndices.modal};
   overflow-y: auto;
-    
+
   ${({ theme }) => theme.mediaQueries.xs} {
     width: 100%;
     max-width: 530px;

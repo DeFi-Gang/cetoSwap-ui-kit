@@ -1979,7 +1979,7 @@ var useParticleBurst = function (options) {
     return { initialize: initialize, teardown: teardown };
 };
 
-var StyledModal = styled__default['default'].div(templateObject_1$u || (templateObject_1$u = __makeTemplateObject(["\n  background: ", ";\n  box-shadow: 0px 19px 72px 0px #000000ad;\n  border: 1px solid ", ";\n  border-radius: 4px;\n  width: 100%;\n  z-index: ", ";\n  overflow-y: auto;\n    \n  ", " {\n    width: 100%;\n    max-width: 530px;\n  }\n"], ["\n  background: ", ";\n  box-shadow: 0px 19px 72px 0px #000000ad;\n  border: 1px solid ", ";\n  border-radius: 4px;\n  width: 100%;\n  z-index: ", ";\n  overflow-y: auto;\n    \n  ", " {\n    width: 100%;\n    max-width: 530px;\n  }\n"])), function (_a) {
+var StyledModal = styled__default['default'].div(templateObject_1$u || (templateObject_1$u = __makeTemplateObject(["\n  background: ", ";\n  box-shadow: 0px 19px 72px 0px #000000ad;\n  border: 1px solid ", ";\n  border-radius: 4px;\n  width: 100%;\n  z-index: ", ";\n  overflow-y: auto;\n\n  ", " {\n    width: 100%;\n    max-width: 530px;\n  }\n"], ["\n  background: ", ";\n  box-shadow: 0px 19px 72px 0px #000000ad;\n  border: 1px solid ", ";\n  border-radius: 4px;\n  width: 100%;\n  z-index: ", ";\n  overflow-y: auto;\n\n  ", " {\n    width: 100%;\n    max-width: 530px;\n  }\n"])), function (_a) {
     var theme = _a.theme;
     return theme.colors.background;
 }, function (_a) {

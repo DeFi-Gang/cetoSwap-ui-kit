@@ -5,12 +5,13 @@ export interface Props {
   secondary?: boolean;
   isActive?: boolean;
   theme: DefaultTheme;
+  isInAccordion?: boolean;
 }
 
 const NavHeaderEntry = styled.div<Props>`
   cursor: pointer;
   border: 0;
-  padding: 0;
+  padding-left: ${({ isInAccordion }) => (isInAccordion ? "16px" : 0)};
   font-size: 16px;
   font-weight: 600;
   height: ${MENU_ENTRY_HEIGHT}px;

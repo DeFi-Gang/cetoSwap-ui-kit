@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 
@@ -7,6 +7,7 @@ import NavLinkHeader from "./NavLink";
 import HeaderNavAccordion from "./HeaderNavAccordion";
 
 import { HeaderNavProps } from "./types";
+import Overlay from "../../components/Overlay/Overlay";
 
 interface Props extends HeaderNavProps {
   handleOpenAccordion: (close?: boolean) => void;
@@ -21,12 +22,15 @@ const Container = styled.div`
 
 const HeaderNav: React.FC<Props> = ({ links, handleOpenAccordion }) => {
   const location = useLocation();
+  const ref = useRef<HTMLDivElement>(null);
+
   const [openAccordionIndex, setOpenAccordionIndex] = useState<number | null>(null);
 
   const handleClick = useCallback(
     (index: number, fromAccordion?: boolean) => {
       setOpenAccordionIndex(openAccordionIndex === index ? null : index);
       if (!fromAccordion) {
+        setOpenAccordionIndex(null);
         handleOpenAccordion(true);
       } else {
         handleOpenAccordion(openAccordionIndex === index);
@@ -35,6 +39,23 @@ const HeaderNav: React.FC<Props> = ({ links, handleOpenAccordion }) => {
     [handleOpenAccordion, openAccordionIndex]
   );
 
+  const handleClickOutside = useCallback(
+    (event: MouseEvent) => {
+      if (ref.current && event.target && !ref.current.contains(event.target as Node)) {
+        setOpenAccordionIndex(null);
+        handleOpenAccordion(true);
+      }
+    },
+    [ref, setOpenAccordionIndex, handleOpenAccordion]
+  );
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside, true);
+    return () => {
+      document.removeEventListener("click", handleClickOutside, true);
+    };
+  }, []);
+
   return (
     <Container>
       {links.map((entry, index) => {
@@ -42,25 +63,33 @@ const HeaderNav: React.FC<Props> = ({ links, handleOpenAccordion }) => {
 
         if (entry.items) {
           return (
-            <HeaderNavAccordion
-              isOpen={openAccordionIndex === index}
-              handleClick={() => handleClick(index, true)}
-              key={entry.label}
-              label={entry.label}
-              className={calloutClass}
-            >
-              {entry.items.map((item) => (
-                <NavHeaderEntry key={item.href} secondary isActive={item.href === location.pathname}>
-                  {item.openTab ? (
-                    <NavLinkHeader target="_blank" href={item.href}>
-                      {item.label}
-                    </NavLinkHeader>
-                  ) : (
-                    <NavLinkHeader href={item.href}>{item.label}</NavLinkHeader>
-                  )}
-                </NavHeaderEntry>
-              ))}
-            </HeaderNavAccordion>
+            <div ref={ref}>
+              <HeaderNavAccordion
+                isOpen={openAccordionIndex === index}
+                handleClick={() => handleClick(index, true)}
+                key={entry.label}
+                label={entry.label}
+                className={calloutClass}
+              >
+                {entry.items.map((item) => (
+                  <NavHeaderEntry
+                    isInAccordion
+                    key={item.href}
+                    secondary
+                    isActive={item.href === location.pathname}
+                    onClick={() => handleClick(index)}
+                  >
+                    {item.openTab ? (
+                      <NavLinkHeader target="_blank" href={item.href}>
+                        {item.label}
+                      </NavLinkHeader>
+                    ) : (
+                      <NavLinkHeader href={item.href}>{item.label}</NavLinkHeader>
+                    )}
+                  </NavHeaderEntry>
+                ))}
+              </HeaderNavAccordion>
+            </div>
           );
         }
         return (

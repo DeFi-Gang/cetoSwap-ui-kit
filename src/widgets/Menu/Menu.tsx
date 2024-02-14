@@ -31,6 +31,7 @@ const StyledNav = styled.nav<{ scrolled: boolean; filledBackground: boolean }>`
   top: 0;
   width: 100%;
   margin: 0 auto;
+  transition: background-color 0.2s;
   height: ${MENU_HEIGHT}px;
   background-color: ${({ theme, scrolled, filledBackground }) =>
     scrolled || filledBackground ? theme.colors.background : "transparent"};

@@ -1,4 +1,4 @@
-import React, { FC, memo, PropsWithChildren } from "react";
+import React, { FC, memo, PropsWithChildren, RefObject } from "react";
 import styled from "styled-components";
 
 import { ArrowDropDownIcon, ArrowDropUpIcon } from "../../components/Svg";
@@ -29,12 +29,13 @@ const AccordionContent = styled.div<{ isOpen: boolean; maxHeight: number }>`
   flex-direction: column;
   gap: 8px;
   position: absolute;
+  z-index: 22;
   border-radius: 4px;
   min-width: 220px;
   top: 50px;
   overflow: hidden;
   background-color: ${({ theme }) => theme.colors.background};
-  padding: ${({ isOpen }) => (isOpen ? `16px` : 0)};
+  padding: ${({ isOpen }) => (isOpen ? `16px 0` : 0)};
 `;
 
 const HeaderNavAccordion: FC<Props> = ({ label, isOpen, handleClick, children, className }) => {
@@ -42,7 +43,7 @@ const HeaderNavAccordion: FC<Props> = ({ label, isOpen, handleClick, children, c
     <Container>
       <NavHeaderEntry onClick={handleClick} className={className}>
         {label}
-        {isOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+        {isOpen ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />}
       </NavHeaderEntry>
       <AccordionContent isOpen={isOpen} maxHeight={(React.Children.count(children) + 8) * MENU_ENTRY_HEIGHT + 32}>
         {children}

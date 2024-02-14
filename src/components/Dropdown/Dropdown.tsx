@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { DropdownProps, PositionProps, Position } from "./types";
+import { lightColors } from "../../theme";
 
 const getLeft = ({ position }: PositionProps) => {
   if (position === "top-right") {
@@ -24,7 +25,8 @@ const DropdownContent = styled.div<{ position: Position }>`
   transform: translate(-50%, 0);
   left: ${getLeft};
   bottom: ${getBottom};
-  background-color: ${({ theme }) => theme.nav.background};
+  background-color: ${({ theme }) => theme.colors.primaryDark};
+  color: ${lightColors.text};
   box-shadow: ${({ theme }) => theme.shadows.level1};
   padding: 16px;
   max-height: 500px;

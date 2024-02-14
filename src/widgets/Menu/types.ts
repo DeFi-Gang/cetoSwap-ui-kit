@@ -1,4 +1,5 @@
 import { Login } from "../WalletModal/types";
+import { IconType } from "./icons/types";
 
 export interface LangType {
   code: string;
@@ -14,8 +15,7 @@ export interface Profile {
 }
 
 export interface PushedProps {
-  isPushed: boolean;
-  pushNav: (isPushed: boolean) => void;
+  pushNav: () => void;
 }
 
 export interface NavTheme {
@@ -30,27 +30,29 @@ export interface MenuSubEntry {
   openTab?: boolean;
 }
 
-export interface MenuEntry {
+export interface NavEntry {
   label: string;
-  icon: string;
   items?: MenuSubEntry[];
   href?: string;
   calloutClass?: string;
   initialOpenState?: boolean;
 }
 
-export interface PanelProps {
-  isDark: boolean;
-  toggleTheme: (isDark: boolean) => void;
-  cakePriceUsd?: number;
-  currentLang: string;
-  langs: LangType[];
-  setLang: (lang: LangType) => void;
-  links: Array<MenuEntry>;
-  priceLink: string;
+export interface HeaderNavProps {
+  links: Array<NavEntry>;
 }
 
-export interface NavProps extends PanelProps {
+export interface SocialEntry {
+  label: string;
+  href: string;
+  icon: IconType;
+}
+
+export interface FooterLinks {
+  socialLinks: Array<SocialEntry>;
+}
+
+export interface NavProps extends HeaderNavProps, FooterLinks {
   account?: string;
   login: Login;
   profile?: Profile;

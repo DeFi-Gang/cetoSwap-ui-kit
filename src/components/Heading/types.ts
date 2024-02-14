@@ -8,10 +8,14 @@ export const tags = {
 };
 
 export const sizes = {
+  XS: "xs",
+  SM: "sm",
   MD: "md",
   LG: "lg",
   XL: "xl",
   XXL: "xxl",
+  XXXL: "xxxl",
+  XXXXL: "xxxxl",
 };
 
 export type Tags = typeof tags[keyof typeof tags];

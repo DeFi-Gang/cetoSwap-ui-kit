@@ -18,4 +18,5 @@ export interface TagProps extends SpaceProps, PropsWithChildren<any> {
   startIcon?: ReactNode;
   endIcon?: ReactNode;
   outline?: boolean;
+  children?: ReactNode;
 }

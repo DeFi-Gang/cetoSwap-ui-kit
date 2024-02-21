@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import styled from "styled-components";
 import Heading from "../../components/Heading/Heading";
 import Flex from "../../components/Flex/Flex";
@@ -6,7 +6,7 @@ import { ArrowBackIcon, CloseIcon } from "../../components/Svg";
 import { IconButton } from "../../components/Button";
 import { InjectedProps } from "./types";
 
-interface Props extends InjectedProps {
+interface Props extends InjectedProps, PropsWithChildren<any> {
   title: string;
   hideCloseButton?: boolean;
   onBack?: () => void;

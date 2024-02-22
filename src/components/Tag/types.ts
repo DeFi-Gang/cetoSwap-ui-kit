@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { PropsWithChildren, ReactNode } from "react";
 import { SpaceProps } from "styled-system";
 
 export const variants = {
@@ -13,7 +13,7 @@ export const variants = {
 
 export type Variants = typeof variants[keyof typeof variants];
 
-export interface TagProps extends SpaceProps {
+export interface TagProps extends SpaceProps, PropsWithChildren<any> {
   variant?: Variants;
   startIcon?: ReactNode;
   endIcon?: ReactNode;

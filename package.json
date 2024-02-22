@@ -1,6 +1,6 @@
 {
   "name": "sparkswap-uikit",
-  "version": "2.0.0",
+  "version": "2.0.7",
   "description": "Set of UI components for Cetoswap projects",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",

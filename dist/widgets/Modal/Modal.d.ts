@@ -1,6 +1,6 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { InjectedProps } from "./types";
-interface Props extends InjectedProps {
+interface Props extends InjectedProps, PropsWithChildren<any> {
     title: string;
     hideCloseButton?: boolean;
     onBack?: () => void;

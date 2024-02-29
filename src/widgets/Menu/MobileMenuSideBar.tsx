@@ -29,7 +29,7 @@ const StyledPanel = styled.div<{ showMenu: boolean }>`
   width: ${({ showMenu }) => (showMenu ? `${SIDEBAR_WIDTH_FULL}px` : 0)};
   height: calc(100vh - ${MENU_HEIGHT}px);
   transition: padding-top 0.2s, width 0.2s;
-  z-index: 20;
+  z-index: 21;
   overflow: ${({ showMenu }) => (showMenu ? "initial" : "hidden")};
   transform: translate3d(0, 0, 0);
   padding: ${({ showMenu }) => (showMenu ? "16px 0" : 0)};

@@ -35,7 +35,7 @@ const StyledNav = styled.nav<{ scrolled: boolean; filledBackground: boolean }>`
   height: ${MENU_HEIGHT}px;
   background-color: ${({ theme, scrolled, filledBackground }) =>
     scrolled || filledBackground ? theme.colors.background : "transparent"};
-  z-index: 20;
+  z-index: 21;
 `;
 
 const StyledNavContainer = styled.nav`
@@ -171,7 +171,7 @@ const Menu: FC<NavProps> = ({ account, login, logout, links, socialLinks, profil
         )}
 
         {children}
-        <MobileOnlyOverlay show={isMobileMenuOpen} onClick={handleMobileOverlayClick} role="presentation" />
+        <MobileOnlyOverlay show={isMobileMenuOpen} onClick={handleMobileOverlayClick} role="presentation" zIndex={20} />
       </BodyWrapper>
       <Footer socialLinks={socialLinks} logoLink={homeLink?.href ?? "/"} />
     </Wrapper>

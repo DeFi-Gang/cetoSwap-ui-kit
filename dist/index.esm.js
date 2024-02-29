@@ -2470,7 +2470,7 @@ var Avatar = function (_a) {
 };
 var templateObject_1$D, templateObject_2$d;
 
-var StyledPanel = styled.div(templateObject_1$E || (templateObject_1$E = __makeTemplateObject(["\n  position: fixed;\n  top: ", "px;\n  right: 0;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  flex-shrink: 0;\n  background-color: ", ";\n  width: ", ";\n  height: calc(100vh - ", "px);\n  transition: padding-top 0.2s, width 0.2s;\n  z-index: 11;\n  overflow: ", ";\n  transform: translate3d(0, 0, 0);\n  padding: ", ";\n"], ["\n  position: fixed;\n  top: ", "px;\n  right: 0;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  flex-shrink: 0;\n  background-color: ", ";\n  width: ", ";\n  height: calc(100vh - ", "px);\n  transition: padding-top 0.2s, width 0.2s;\n  z-index: 11;\n  overflow: ", ";\n  transform: translate3d(0, 0, 0);\n  padding: ", ";\n"])), MENU_HEIGHT, function (_a) {
+var StyledPanel = styled.div(templateObject_1$E || (templateObject_1$E = __makeTemplateObject(["\n  position: fixed;\n  top: ", "px;\n  right: 0;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  flex-shrink: 0;\n  background-color: ", ";\n  width: ", ";\n  height: calc(100vh - ", "px);\n  transition: padding-top 0.2s, width 0.2s;\n  z-index: 21;\n  overflow: ", ";\n  transform: translate3d(0, 0, 0);\n  padding: ", ";\n"], ["\n  position: fixed;\n  top: ", "px;\n  right: 0;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  flex-shrink: 0;\n  background-color: ", ";\n  width: ", ";\n  height: calc(100vh - ", "px);\n  transition: padding-top 0.2s, width 0.2s;\n  z-index: 21;\n  overflow: ", ";\n  transform: translate3d(0, 0, 0);\n  padding: ", ";\n"])), MENU_HEIGHT, function (_a) {
     var theme = _a.theme;
     return theme.colors.background;
 }, function (_a) {
@@ -2903,8 +2903,8 @@ var Wrapper$1 = styled.div(templateObject_1$K || (templateObject_1$K = __makeTem
     var theme = _a.theme;
     return theme.colors.background;
 });
-var StyledNav = styled.nav(templateObject_2$h || (templateObject_2$h = __makeTemplateObject(["\n  position: sticky;\n  top: 0;\n  width: 100%;\n  margin: 0 auto;\n  transition: background-color 0.2s;\n  height: ", "px;\n  background-color: ", ";\n  z-index: 20;\n"], ["\n  position: sticky;\n  top: 0;\n  width: 100%;\n  margin: 0 auto;\n  transition: background-color 0.2s;\n  height: ", "px;\n  background-color: ",
-    ";\n  z-index: 20;\n"])), MENU_HEIGHT, function (_a) {
+var StyledNav = styled.nav(templateObject_2$h || (templateObject_2$h = __makeTemplateObject(["\n  position: sticky;\n  top: 0;\n  width: 100%;\n  margin: 0 auto;\n  transition: background-color 0.2s;\n  height: ", "px;\n  background-color: ", ";\n  z-index: 21;\n"], ["\n  position: sticky;\n  top: 0;\n  width: 100%;\n  margin: 0 auto;\n  transition: background-color 0.2s;\n  height: ", "px;\n  background-color: ",
+    ";\n  z-index: 21;\n"])), MENU_HEIGHT, function (_a) {
     var theme = _a.theme, scrolled = _a.scrolled, filledBackground = _a.filledBackground;
     return scrolled || filledBackground ? theme.colors.background : "transparent";
 });
@@ -2986,7 +2986,7 @@ var Menu = function (_a) {
         React.createElement(BodyWrapper, null,
             isMobile && (React.createElement(MobileMenuSideBar, { showMenu: isMobileMenuOpen, pushNav: handleMobileMenuClick, links: links, account: account, login: login, logout: logout, profile: profile })),
             children,
-            React.createElement(MobileOnlyOverlay, { show: isMobileMenuOpen, onClick: handleMobileOverlayClick, role: "presentation" })),
+            React.createElement(MobileOnlyOverlay, { show: isMobileMenuOpen, onClick: handleMobileOverlayClick, role: "presentation", zIndex: 20 })),
         React.createElement(Footer$1, { socialLinks: socialLinks, logoLink: (_c = homeLink === null || homeLink === void 0 ? void 0 : homeLink.href) !== null && _c !== void 0 ? _c : "/" })));
 };
 var Menu$1 = memo(Menu);

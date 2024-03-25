@@ -5,7 +5,7 @@ import * as IconModule from "./icons";
 import { Link } from "../../components/Link";
 import CopyToClipboard from "../WalletModal/CopyToClipboard";
 import Logo from "./Logo";
-import { CETO_SWAP_DOCS, FOOTER_HEIGHT, FOOTER_HEIGHT_MOBILE } from "./config";
+import { CETO_SWAP_DOCS } from "./config";
 import { FooterLinks } from "./types";
 
 const StyledFooter = styled.footer`
@@ -13,10 +13,7 @@ const StyledFooter = styled.footer`
   border-top: 1px solid;
   border-top-color: ${({ theme }) => theme.colors.card};
   background-color: ${({ theme }) => theme.colors.background};
-  height: ${FOOTER_HEIGHT_MOBILE}px;
-  ${({ theme }) => theme.mediaQueries.sm} {
-    height: ${FOOTER_HEIGHT}px;
-  }
+  padding: 32px 0;
 `;
 const Container = styled.div`
   display: flex;
@@ -60,17 +57,16 @@ const Rights = styled.div`
 `;
 
 const Docs = styled.span`
-    gap: 4px;
-    font-weight: 400;
-    display: flex;
-    align-items: center;
-    color: ${({ theme }) => theme.colors.text};
+  gap: 4px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  color: ${({ theme }) => theme.colors.text};
 
-    svg {
-        fill: white;
-    }
+  svg {
+    fill: white;
+  }
 `;
-
 
 const Icons = (IconModule as unknown) as { [key: string]: React.FC<SvgProps> };
 
@@ -97,9 +93,10 @@ const Footer: FC<Props> = ({ socialLinks, logoLink }) => {
             })}
           </SocialLinksWrap>
 
-
           <Docs>
-            <Link color="text" bold={false} external href={CETO_SWAP_DOCS}>Documents</Link>
+            <Link color="text" bold={false} external href={CETO_SWAP_DOCS}>
+              Documents
+            </Link>
             <CopyToClipboard toCopy={CETO_SWAP_DOCS} />
           </Docs>
 

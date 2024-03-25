@@ -2363,7 +2363,7 @@ var FOOTER_HEIGHT = 138;
 var FOOTER_HEIGHT_MOBILE = 243;
 var MENU_ENTRY_HEIGHT = 22;
 var SIDEBAR_WIDTH_FULL = 220;
-var CETO_SWAP_DOCS = 'https://docs.cetoswap.com/';
+var CETO_SWAP_DOCS = "https://docs.cetoswap.com/";
 
 var rainbowAnimation = styled.keyframes(templateObject_1$A || (templateObject_1$A = __makeTemplateObject(["\n  0%,\n  100% {\n    background-position: 0 0;\n  }\n  50% {\n    background-position: 100% 0;\n  }\n"], ["\n  0%,\n  100% {\n    background-position: 0 0;\n  }\n  50% {\n    background-position: 100% 0;\n  }\n"])));
 var LinkLabel = styled__default['default'].div(templateObject_2$b || (templateObject_2$b = __makeTemplateObject(["\n  color: ", ";\n  transition: color 0.4s;\n"], ["\n  color: ", ";\n  transition: color 0.4s;\n"])), function (_a) {
@@ -2858,16 +2858,13 @@ var IconModule = /*#__PURE__*/Object.freeze({
     DiscordIcon: Icon$1a
 });
 
-var StyledFooter = styled__default['default'].footer(templateObject_1$I || (templateObject_1$I = __makeTemplateObject(["\n  width: 100%;\n  border-top: 1px solid;\n  border-top-color: ", ";\n  background-color: ", ";\n  height: ", "px;\n  ", " {\n    height: ", "px;\n  }\n"], ["\n  width: 100%;\n  border-top: 1px solid;\n  border-top-color: ", ";\n  background-color: ", ";\n  height: ", "px;\n  ", " {\n    height: ", "px;\n  }\n"])), function (_a) {
+var StyledFooter = styled__default['default'].footer(templateObject_1$I || (templateObject_1$I = __makeTemplateObject(["\n  width: 100%;\n  border-top: 1px solid;\n  border-top-color: ", ";\n  background-color: ", ";\n  padding: 32px 0;\n"], ["\n  width: 100%;\n  border-top: 1px solid;\n  border-top-color: ", ";\n  background-color: ", ";\n  padding: 32px 0;\n"])), function (_a) {
     var theme = _a.theme;
     return theme.colors.card;
 }, function (_a) {
     var theme = _a.theme;
     return theme.colors.background;
-}, FOOTER_HEIGHT_MOBILE, function (_a) {
-    var theme = _a.theme;
-    return theme.mediaQueries.sm;
-}, FOOTER_HEIGHT);
+});
 var Container$6 = styled__default['default'].div(templateObject_2$g || (templateObject_2$g = __makeTemplateObject(["\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  gap: 32px;\n  padding: 0 15px;\n  width: 100%;\n  max-width: 1920px;\n  margin: 0 auto;\n  height: 100%;\n  ", " {\n    padding: 0 30px;\n    flex-direction: row;\n    justify-content: space-between;\n  }\n"], ["\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  gap: 32px;\n  padding: 0 15px;\n  width: 100%;\n  max-width: 1920px;\n  margin: 0 auto;\n  height: 100%;\n  ", " {\n    padding: 0 30px;\n    flex-direction: row;\n    justify-content: space-between;\n  }\n"])), function (_a) {
     var theme = _a.theme;
     return theme.mediaQueries.sm;
@@ -2881,7 +2878,7 @@ var Rights = styled__default['default'].div(templateObject_5$1 || (templateObjec
     var theme = _a.theme;
     return theme.colors.text;
 });
-var Docs = styled__default['default'].span(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n    gap: 4px;\n    font-weight: 400;\n    display: flex;\n    align-items: center;\n    color: ", ";\n\n    svg {\n        fill: white;\n    }\n"], ["\n    gap: 4px;\n    font-weight: 400;\n    display: flex;\n    align-items: center;\n    color: ", ";\n\n    svg {\n        fill: white;\n    }\n"])), function (_a) {
+var Docs = styled__default['default'].span(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  gap: 4px;\n  font-weight: 400;\n  display: flex;\n  align-items: center;\n  color: ", ";\n\n  svg {\n    fill: white;\n  }\n"], ["\n  gap: 4px;\n  font-weight: 400;\n  display: flex;\n  align-items: center;\n  color: ", ";\n\n  svg {\n    fill: white;\n  }\n"])), function (_a) {
     var theme = _a.theme;
     return theme.colors.text;
 });

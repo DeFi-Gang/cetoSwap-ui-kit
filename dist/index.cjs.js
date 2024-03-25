@@ -2363,6 +2363,7 @@ var FOOTER_HEIGHT = 138;
 var FOOTER_HEIGHT_MOBILE = 243;
 var MENU_ENTRY_HEIGHT = 22;
 var SIDEBAR_WIDTH_FULL = 220;
+var CETO_SWAP_DOCS = 'https://docs.cetoswap.com/';
 
 var rainbowAnimation = styled.keyframes(templateObject_1$A || (templateObject_1$A = __makeTemplateObject(["\n  0%,\n  100% {\n    background-position: 0 0;\n  }\n  50% {\n    background-position: 100% 0;\n  }\n"], ["\n  0%,\n  100% {\n    background-position: 0 0;\n  }\n  50% {\n    background-position: 100% 0;\n  }\n"])));
 var LinkLabel = styled__default['default'].div(templateObject_2$b || (templateObject_2$b = __makeTemplateObject(["\n  color: ", ";\n  transition: color 0.4s;\n"], ["\n  color: ", ";\n  transition: color 0.4s;\n"])), function (_a) {
@@ -2880,6 +2881,10 @@ var Rights = styled__default['default'].div(templateObject_5$1 || (templateObjec
     var theme = _a.theme;
     return theme.colors.text;
 });
+var Docs = styled__default['default'].span(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n    gap: 4px;\n    font-weight: 400;\n    display: flex;\n    align-items: center;\n    color: ", ";\n\n    svg {\n        fill: white;\n    }\n"], ["\n    gap: 4px;\n    font-weight: 400;\n    display: flex;\n    align-items: center;\n    color: ", ";\n\n    svg {\n        fill: white;\n    }\n"])), function (_a) {
+    var theme = _a.theme;
+    return theme.colors.text;
+});
 var Icons = IconModule;
 var Footer = function (_a) {
     var socialLinks = _a.socialLinks, logoLink = _a.logoLink;
@@ -2894,13 +2899,16 @@ var Footer = function (_a) {
                     return (React__default['default'].createElement(Link, { external: true, key: social.label, href: social.href, "aria-label": social.label },
                         React__default['default'].createElement(Icon, __assign({}, iconProps))));
                 })),
+                React__default['default'].createElement(Docs, null,
+                    React__default['default'].createElement(Link, { color: "text", bold: false, external: true, href: CETO_SWAP_DOCS }, "Documents"),
+                    React__default['default'].createElement(CopyToClipboard, { toCopy: CETO_SWAP_DOCS })),
                 React__default['default'].createElement(Rights, null,
                     " \u00A9 ",
                     currentYear,
                     " CetoSwap. All rights reserved.")))));
 };
 var Footer$1 = React.memo(Footer);
-var templateObject_1$I, templateObject_2$g, templateObject_3$7, templateObject_4$2, templateObject_5$1;
+var templateObject_1$I, templateObject_2$g, templateObject_3$7, templateObject_4$2, templateObject_5$1, templateObject_6;
 
 var MenuButton = styled__default['default'](Button)(templateObject_1$J || (templateObject_1$J = __makeTemplateObject(["\n  color: ", ";\n  padding: 0 8px;\n  border-radius: 8px;\n"], ["\n  color: ", ";\n  padding: 0 8px;\n  border-radius: 8px;\n"])), function (_a) {
     var theme = _a.theme;

@@ -193,3 +193,5 @@ export const FOOTER_HEIGHT = 138;
 export const FOOTER_HEIGHT_MOBILE = 243;
 export const MENU_ENTRY_HEIGHT = 22;
 export const SIDEBAR_WIDTH_FULL = 220;
+
+export const CETO_SWAP_DOCS = 'https://docs.cetoswap.com/';

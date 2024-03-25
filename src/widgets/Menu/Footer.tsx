@@ -3,9 +3,9 @@ import styled from "styled-components";
 import { SvgProps } from "../../components/Svg";
 import * as IconModule from "./icons";
 import { Link } from "../../components/Link";
+import CopyToClipboard from "../WalletModal/CopyToClipboard";
 import Logo from "./Logo";
-
-import { FOOTER_HEIGHT, FOOTER_HEIGHT_MOBILE } from "./config";
+import { CETO_SWAP_DOCS, FOOTER_HEIGHT, FOOTER_HEIGHT_MOBILE } from "./config";
 import { FooterLinks } from "./types";
 
 const StyledFooter = styled.footer`
@@ -59,6 +59,19 @@ const Rights = styled.div`
   color: ${({ theme }) => theme.colors.text};
 `;
 
+const Docs = styled.span`
+    gap: 4px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    color: ${({ theme }) => theme.colors.text};
+
+    svg {
+        fill: white;
+    }
+`;
+
+
 const Icons = (IconModule as unknown) as { [key: string]: React.FC<SvgProps> };
 
 interface Props extends FooterLinks {
@@ -83,6 +96,13 @@ const Footer: FC<Props> = ({ socialLinks, logoLink }) => {
               );
             })}
           </SocialLinksWrap>
+
+
+          <Docs>
+            <Link color="text" bold={false} external href={CETO_SWAP_DOCS}>Documents</Link>
+            <CopyToClipboard toCopy={CETO_SWAP_DOCS} />
+          </Docs>
+
           <Rights> © {currentYear} CetoSwap. All rights reserved.</Rights>
         </RightBlock>
       </Container>

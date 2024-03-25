@@ -48,3 +48,4 @@ export declare const FOOTER_HEIGHT = 138;
 export declare const FOOTER_HEIGHT_MOBILE = 243;
 export declare const MENU_ENTRY_HEIGHT = 22;
 export declare const SIDEBAR_WIDTH_FULL = 220;
+export declare const CETO_SWAP_DOCS = "https://docs.cetoswap.com/";
